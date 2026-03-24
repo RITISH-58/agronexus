@@ -36,7 +36,7 @@ def add_land(
 ):
     new_land = land_model.LandDetail(
         **land_data.dict(),
-        user_id=current_user.id
+        user_id=current_user.user_id
     )
     db.add(new_land)
     db.commit()
@@ -48,7 +48,7 @@ def get_land_details(
     current_user: user_models.User = Depends(security.get_current_user),
     db: Session = Depends(get_db)
 ):
-    lands = db.query(land_model.LandDetail).filter(land_model.LandDetail.user_id == current_user.id).all()
+    lands = db.query(land_model.LandDetail).filter(land_model.LandDetail.user_id == current_user.user_id).all()
     return lands
 
 @router.delete("/profile/land/{land_id}")
@@ -59,7 +59,7 @@ def delete_land(
 ):
     land = db.query(land_model.LandDetail).filter(
         land_model.LandDetail.land_id == land_id,
-        land_model.LandDetail.user_id == current_user.id
+        land_model.LandDetail.user_id == current_user.user_id
     ).first()
     
     if not land:

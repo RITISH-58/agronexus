@@ -29,28 +29,22 @@ const Schemes = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); setError(null);
-    setSchemes([]); setCrops([]); setOpportunities([]);
+    setSchemes([]); 
     try {
       const schemeRes = await axios.post(`${API_BASE}/scheme-recommendation`, {
         soil_type: formData.soil_type, land_size: formData.land_size,
         water_availability: formData.water_availability, state: formData.state, district: formData.district
       });
-      setSchemes(schemeRes.data.recommended_schemes || []);
-
-      const cropRes = await axios.post(`${API_BASE}/crop-recommendation`, {
-        soil_type: formData.soil_type, nitrogen: formData.nitrogen, phosphorus: formData.phosphorus,
-        potassium: formData.potassium, ph_level: formData.ph_level,
-        water_availability: formData.water_availability, state: formData.state
+      // Sort state-specific schemes to the top
+      const sortedSchemes = (schemeRes.data.recommended_schemes || []).sort((a, b) => {
+        const stateLower = formData.state.toLowerCase();
+        const aMatches = a.name?.toLowerCase().includes(stateLower) || a.benefit?.toLowerCase().includes(stateLower);
+        const bMatches = b.name?.toLowerCase().includes(stateLower) || b.benefit?.toLowerCase().includes(stateLower);
+        if (aMatches && !bMatches) return -1;
+        if (!aMatches && bMatches) return 1;
+        return 0;
       });
-      const recommendedCrops = cropRes.data.recommended_crops || [];
-      setCrops(recommendedCrops);
-
-      if (recommendedCrops.length > 0) {
-        const entRes = await axios.post(`${API_BASE}/agro-entrepreneur-opportunities`, {
-          recommended_crops: recommendedCrops.map(c => c.crop_name)
-        });
-        setOpportunities(entRes.data.entrepreneur_opportunities || []);
-      }
+      setSchemes(sortedSchemes);
     } catch (err) {
       setError("Failed to fetch. Check backend.");
     } finally {
@@ -60,11 +54,9 @@ const Schemes = () => {
 
   const tabs = [
     { key: 'schemes', label: 'Schemes', count: schemes.length, icon: Landmark },
-    { key: 'crops', label: 'Crops', count: crops.length, icon: Sprout },
-    { key: 'entrepreneur', label: 'Business', count: opportunities.length, icon: Briefcase },
   ];
 
-  const hasResults = schemes.length > 0 || crops.length > 0 || opportunities.length > 0;
+  const hasResults = schemes.length > 0;
 
   return (
     <div className="min-h-screen px-4 pt-6 pb-4 max-w-lg mx-auto space-y-5 animate-fade-in">
@@ -182,37 +174,6 @@ const Schemes = () => {
                   Apply Now <ChevronRight size={14} />
                 </a>
               )}
-            </div>
-          ))}
-
-          {/* Crops Tab */}
-          {activeTab === 'crops' && (
-            <div className="grid grid-cols-2 gap-3">
-              {crops.map((c, i) => (
-                <div key={i} className="bg-white rounded-3xl shadow-card p-4 text-center space-y-2">
-                  <div className="w-10 h-10 bg-leaf-100 rounded-2xl flex items-center justify-center mx-auto">
-                    <Sprout size={18} className="text-leaf-600" />
-                  </div>
-                  <p className="font-bold text-sm text-dark capitalize">{c.crop_name}</p>
-                  <div className="w-full bg-cream-300 rounded-full h-1.5">
-                    <div className="bg-leaf-500 h-1.5 rounded-full transition-all" style={{ width: `${c.suitability_score}%` }} />
-                  </div>
-                  <p className="text-[10px] text-leaf-700 font-bold">{c.suitability_score}% match</p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Business Tab */}
-          {activeTab === 'entrepreneur' && opportunities.map((o, i) => (
-            <div key={i} className="bg-gradient-to-br from-wheat-50 to-cream-200 rounded-3xl shadow-card p-4 space-y-2">
-              <div className="flex items-center gap-2">
-                <span className="text-lg">💼</span>
-                <h3 className="font-bold text-sm text-dark">{o.business_opportunity}</h3>
-              </div>
-              <p className="text-xs text-muted"><strong>Crop:</strong> {o.crop}</p>
-              <p className="text-xs text-muted"><strong>Process:</strong> {o.processing_idea}</p>
-              <div className="badge badge-green">💰 {o.expected_profit_potential}</div>
             </div>
           ))}
         </div>

@@ -145,7 +145,7 @@ const SmartRecommendTab = () => {
               {/* Land Size */}
               <div>
                 <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">{t('land_size')} (Acres)</label>
-                <input type="number" placeholder="e.g., 5" value={landSize}
+                <input type="number" step="any" min="0" placeholder="e.g., 5" value={landSize}
                   onChange={(e) => setLandSize(e.target.value)}
                   className="w-full px-4 py-2.5 bg-white/90 border border-black/5 border-2 border-white/50 rounded-xl input-glow transition-all duration-300" />
               </div>
@@ -187,18 +187,20 @@ const SmartRecommendTab = () => {
 
             {/* Budget */}
             <div className="mt-5">
-              <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">{t('budget')}</label>
-              <div className="flex flex-wrap gap-2">
-                {BUDGET_OPTIONS.map(b => (
-                  <button key={b.value} onClick={() => setBudget(budget == b.value ? '' : b.value)}
-                    className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 active:scale-95 flex items-center justify-center gap-1 ${
-                      budget == b.value 
-                        ? 'bg-[#4CAF50] text-white border-2 border-[#388E3C] scale-105 shadow-[0_4px_12px_rgba(76,175,80,0.3)]' 
-                        : 'bg-white text-gray-700 border border-gray-200 hover:border-green-400 hover:scale-105'
-                    }`}>
-                    <BadgeIndianRupee size={12} />{b.label}
-                  </button>
-                ))}
+              <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">{t('budget')} (₹)</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <BadgeIndianRupee size={16} className="text-gray-400" />
+                </div>
+                <input
+                  type="number"
+                  min="0"
+                  step="any"
+                  placeholder="e.g., 500000"
+                  value={budget}
+                  onChange={(e) => setBudget(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2.5 bg-white/90 border border-black/5 border-2 border-white/50 rounded-xl input-glow transition-all duration-300"
+                />
               </div>
             </div>
           </div>
