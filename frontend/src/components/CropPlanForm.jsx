@@ -13,7 +13,8 @@ const CropPlanForm = () => {
     const [formData, setFormData] = useState({
         crop_type: '', soil_type: 'Loamy', season: 'Kharif',
         land_acres: '', water_source: 'Medium', location: '', sowing_date: '',
-        nitrogen_level: '', phosphorus_level: '', potassium_level: '', soil_ph: ''
+        nitrogen_level: '', phosphorus_level: '', potassium_level: '', soil_ph: '',
+        base_price: ''
     });
 
     const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,6 +29,7 @@ const CropPlanForm = () => {
                 phosphorus_level: formData.phosphorus_level ? parseFloat(formData.phosphorus_level) : null,
                 potassium_level: formData.potassium_level ? parseFloat(formData.potassium_level) : null,
                 soil_ph: formData.soil_ph ? parseFloat(formData.soil_ph) : null,
+                base_price: formData.base_price ? parseFloat(formData.base_price) : null,
             };
             const response = await fetch(`${API_BASE_URL}/api/crop-plans`, {
                 method: 'POST',
@@ -74,10 +76,17 @@ const CropPlanForm = () => {
                     <p className="text-xs font-bold text-muted uppercase tracking-wider flex items-center gap-1.5">
                         <Leaf size={12} className="text-leaf-500" /> Crop Details
                     </p>
-                    <div>
-                        <label className="text-[10px] font-bold text-muted uppercase tracking-wider mb-1 block">Crop Type</label>
-                        <input type="text" name="crop_type" required placeholder="e.g. Rice, Cotton, Wheat"
-                            className="input-mobile text-sm" value={formData.crop_type} onChange={handleChange} />
+                    <div className="grid grid-cols-2 gap-3">
+                        <div>
+                            <label className="text-[10px] font-bold text-muted uppercase tracking-wider mb-1 block">Crop Type</label>
+                            <input type="text" name="crop_type" required placeholder="e.g. Rice, Cotton"
+                                className="input-mobile text-sm" value={formData.crop_type} onChange={handleChange} />
+                        </div>
+                        <div>
+                            <label className="text-[10px] font-bold text-muted uppercase tracking-wider mb-1 block">Current Price (₹/qt)</label>
+                            <input type="number" step="any" min="0" name="base_price" placeholder="e.g. 2200"
+                                className="input-mobile text-sm" value={formData.base_price} onChange={handleChange} />
+                        </div>
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                         <div>

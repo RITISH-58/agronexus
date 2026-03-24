@@ -45,13 +45,13 @@ const featureCards = [
     badge: 'Updated',
   },
   {
-    title: 'AgriVoice PRO',
-    desc: 'AI advice via phone call — no smartphone needed',
-    icon: Phone,
-    path: '/agrivoice',
-    img: IMAGES.tractor,
-    gradient: 'from-rose-600/90 to-rose-800/80',
-    badge: '📞 Voice AI',
+    title: 'Direct Buyers',
+    desc: 'Sell directly to verified buyers & remove middlemen',
+    icon: TrendingUp,
+    path: '/entrepreneur',
+    img: IMAGES.dairy,
+    gradient: 'from-blue-600/90 to-indigo-700/80',
+    badge: '0% Middleman',
   },
 ];
 

@@ -23,6 +23,7 @@ class CropPlan(Base):
     phosphorus_level = Column(Float, nullable=True)
     potassium_level = Column(Float, nullable=True)
     soil_ph = Column(Float, nullable=True)
+    base_price = Column(Float, nullable=True)
     
     created_at = Column(DateTime, default=datetime.utcnow)
 
