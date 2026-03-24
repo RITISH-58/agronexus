@@ -93,10 +93,10 @@ const LandDetails = () => {
                             <div className="mt-1 relative rounded-md shadow-sm">
                                 <input
                                     type="number"
-                                    step="0.1"
+                                    step="any"
                                     name="land_size"
                                     required
-                                    min="0.1"
+                                    min="0"
                                     className="block w-full pr-10 border-gray-300 rounded-xl focus:ring-green-500 focus:border-green-500 sm:text-sm py-3 px-4 border"
                                     placeholder="e.g. 5.5"
                                     value={formData.land_size}
