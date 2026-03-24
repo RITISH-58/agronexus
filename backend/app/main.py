@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import app.api.endpoints  # noqa: F401
 from app.api.scheme_routes import router as scheme_router
 from app.api.crop_routes import router as crop_router
+from app.api.crop_intel_routes import router as crop_intel_router
 from app.api.business_routes import router as business_router
 from app.api.auth_routes import router as auth_router
 from app.api.profile_routes import router as profile_router
@@ -23,6 +24,7 @@ app.add_middleware(
 
 app.include_router(scheme_router, prefix="/api", tags=["Government Schemes"])
 app.include_router(crop_router, prefix="/api", tags=["Crop Intelligence"])
+app.include_router(crop_intel_router, prefix="/api", tags=["Crop Intelligence ML"])
 app.include_router(business_router, prefix="/api", tags=["Agribusiness"])
 app.include_router(auth_router, prefix="/api/auth", tags=["Authentication"])
 app.include_router(profile_router, prefix="/api", tags=["Profile & Land"])

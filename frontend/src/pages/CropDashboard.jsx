@@ -5,7 +5,7 @@ import {
     ChevronLeft, Calendar, MapPin, Ruler, Droplets,
     Sprout, AlertTriangle, ShieldAlert, BarChart3,
     ShieldCheck, Lightbulb, ChevronDown, ChevronUp,
-    TrendingUp, Eye, Zap
+    TrendingUp, Eye, Zap, Layers
 } from 'lucide-react';
 import YieldPredictionCard from '../components/YieldPredictionCard';
 import FertilizerCard from '../components/FertilizerCard';
@@ -80,7 +80,7 @@ const CropDashboard = () => {
 
     if (!data) return null;
 
-    const { plan_details: plan, weather, weather_alerts, pest_risk, yield_prediction, fertilizer_recommendation, risk_reduction, market_trend } = data;
+    const { plan_details: plan, weather, weather_alerts, pest_risk, yield_prediction, fertilizer_recommendation, risk_reduction, market_trend, soil_insight } = data;
 
     const alertSeverity = (type) => {
         const t = (type || '').toLowerCase();
@@ -154,9 +154,41 @@ const CropDashboard = () => {
                 </div>
             </div>
 
-            {/* ═══════ 2. SMART INSIGHT CARD ═══════ */}
+            {/* ═══════ 2. SOIL INSIGHT CARD ═══════ */}
+            {soil_insight && (
+                <div className="stagger-card stagger-2 glass rounded-2xl p-4 mb-2 border border-leaf-100 bg-gradient-to-br from-white to-leaf-50/50">
+                    <div className="flex items-center gap-2 mb-3">
+                        <div className="bg-leaf-100 p-1.5 rounded-lg">
+                            <Layers className="w-4 h-4 text-leaf-600" />
+                        </div>
+                        <h2 className="text-sm font-black text-gray-800 tracking-tight">Soil Intelligence</h2>
+                    </div>
+                    
+                    <div className="grid grid-cols-3 gap-2 mb-3">
+                        <div className="bg-white p-2 text-center rounded-xl border border-gray-100 shadow-sm">
+                            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-0.5">Type</p>
+                            <p className="text-xs font-black text-gray-800">{soil_insight.soil_type}</p>
+                        </div>
+                        <div className="bg-white p-2 text-center rounded-xl border border-gray-100 shadow-sm">
+                            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-0.5">Moisture</p>
+                            <p className="text-xs font-black text-blue-600">{soil_insight.moisture_level}</p>
+                        </div>
+                        <div className="bg-white p-2 text-center rounded-xl border border-gray-100 shadow-sm">
+                            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-0.5">Climate</p>
+                            <p className="text-xs font-black text-amber-600">{soil_insight.climate}</p>
+                        </div>
+                    </div>
+                    
+                    <div className="bg-leaf-50 p-2.5 rounded-xl border border-leaf-100/50 flex gap-2 items-start mt-1">
+                        <Sprout className="w-3.5 h-3.5 text-leaf-600 mt-0.5 flex-shrink-0" />
+                        <p className="text-[10px] text-gray-700 leading-snug">{soil_insight.explanation}</p>
+                    </div>
+                </div>
+            )}
+
+            {/* ═══════ 3. SMART INSIGHT CARD ═══════ */}
             {topRecommendation && (
-                <div className="stagger-card stagger-2 glass rounded-2xl p-3 mb-2">
+                <div className="stagger-card stagger-3 glass rounded-2xl p-3 mb-2">
                     <div className="flex items-center gap-2 mb-1.5">
                         <div className="bg-gradient-to-br from-amber-400 to-orange-500 p-1.5 rounded-lg">
                             <Lightbulb className="w-4 h-4 text-white" />

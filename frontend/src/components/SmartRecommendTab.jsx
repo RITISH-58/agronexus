@@ -12,8 +12,6 @@ import { API_BASE_URL } from '../config/api';
 
 const API = `${API_BASE_URL}/api`;
 
-const SOIL_TYPES = ['Alluvial', 'Black Soil', 'Red Soil', 'Sandy', 'Clay', 'Loamy'];
-const SEASONS = ['Kharif', 'Rabi', 'Summer'];
 const WATER_OPTIONS = [
   { value: 'Low', label: 'Low (Rain dependent)', icon: '🌧️' },
   { value: 'Medium', label: 'Medium (Borewell)', icon: '💧' },
@@ -51,9 +49,7 @@ const SmartRecommendTab = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [product, setProduct] = useState('');
-  const [soilType, setSoilType] = useState('');
   const [landSize, setLandSize] = useState('');
-  const [season, setSeason] = useState('');
   const [water, setWater] = useState('');
   const [budget, setBudget] = useState('');
   const [loading, setLoading] = useState(false);
@@ -66,9 +62,7 @@ const SmartRecommendTab = () => {
     try {
       const { data } = await axios.post(`${API}/venture/entrepreneur/recommend`, {
         product: product.trim(),
-        soil_type: soilType || null,
         land_size: landSize ? parseFloat(landSize) : null,
-        season: season || null,
         water: water || null,
         budget: budget ? parseFloat(budget) : null,
       });
@@ -120,28 +114,19 @@ const SmartRecommendTab = () => {
 
           {/* Farm Details */}
           <div className="glass rounded-3xl p-6 border-0 mt-6">
-            <div className="flex items-center gap-2 mb-5">
-              <Mountain size={20} className="text-green-500" />
-              <span className="text-sm font-bold text-gray-700 uppercase tracking-wider">{t('farm_details')}</span>
-              <span className="text-xs text-gray-600 ml-2">(Optional — helps refine recommendations)</span>
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5">
+              <div className="flex items-center gap-2">
+                <Mountain size={20} className="text-green-500" />
+                <span className="text-sm font-bold text-gray-700 uppercase tracking-wider">{t('farm_details')}</span>
+                <span className="text-xs text-gray-600 ml-2">(Optional)</span>
+              </div>
+              <div className="flex items-center gap-1.5 bg-green-50 text-green-700 px-3 py-1.5 rounded-full border border-green-100/50 shadow-sm w-fit">
+                  <Target size={12} className="text-green-600" />
+                  <span className="text-[10px] font-bold tracking-wide uppercase">Smart Soil Detection Enabled</span>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Soil Type */}
-              <div>
-                <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">{t('soil_type')}</label>
-                <div className="grid grid-cols-3 gap-2">
-                  {SOIL_TYPES.map(s => (
-                    <button key={s} onClick={() => setSoilType(soilType === s ? '' : s)}
-                      className={`p-2.5 rounded-xl text-xs font-bold transition-all duration-200 active:scale-95 ${
-                        soilType === s 
-                          ? 'bg-[#4CAF50] text-white border-2 border-[#388E3C] scale-105 shadow-[0_4px_12px_rgba(76,175,80,0.3)]' 
-                          : 'bg-white text-gray-700 border border-gray-200 hover:border-green-400 hover:scale-105'
-                      }`}>{s}</button>
-                  ))}
-                </div>
-              </div>
-
+            <div className="space-y-6">
               {/* Land Size */}
               <div>
                 <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">{t('land_size')} (Acres)</label>
@@ -150,27 +135,10 @@ const SmartRecommendTab = () => {
                   className="w-full px-4 py-2.5 bg-white/90 border border-black/5 border-2 border-white/50 rounded-xl input-glow transition-all duration-300" />
               </div>
 
-              {/* Season */}
-              <div>
-                <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">{t('season')}</label>
-                <div className="flex gap-2">
-                  {SEASONS.map(s => (
-                    <button key={s} onClick={() => setSeason(season === s ? '' : s)}
-                      className={`flex-1 p-2.5 rounded-xl text-xs font-bold transition-all duration-200 active:scale-95 flex items-center justify-center gap-1 ${
-                        season === s 
-                          ? 'bg-[#4CAF50] text-white border-2 border-[#388E3C] scale-105 shadow-[0_4px_12px_rgba(76,175,80,0.3)]' 
-                          : 'bg-white text-gray-700 border border-gray-200 hover:border-green-400 hover:scale-105'
-                      }`}>
-                      <Sun size={12} />{s}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
               {/* Water */}
               <div>
                 <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">Water Availability</label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {WATER_OPTIONS.map(w => (
                     <button key={w.value} onClick={() => setWater(water === w.value ? '' : w.value)}
                       className={`p-2.5 rounded-xl text-xs font-bold transition-all duration-200 active:scale-95 flex items-center justify-center gap-1 ${
@@ -183,24 +151,24 @@ const SmartRecommendTab = () => {
                   ))}
                 </div>
               </div>
-            </div>
 
-            {/* Budget */}
-            <div className="mt-5">
-              <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">{t('budget')} (₹)</label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <BadgeIndianRupee size={16} className="text-gray-400" />
+              {/* Budget */}
+              <div>
+                <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">{t('budget')} (₹)</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <BadgeIndianRupee size={16} className="text-gray-400" />
+                  </div>
+                  <input
+                    type="number"
+                    min="0"
+                    step="any"
+                    placeholder="e.g., 500000"
+                    value={budget}
+                    onChange={(e) => setBudget(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2.5 bg-white/90 border border-black/5 border-2 border-white/50 rounded-xl input-glow transition-all duration-300"
+                  />
                 </div>
-                <input
-                  type="number"
-                  min="0"
-                  step="any"
-                  placeholder="e.g., 500000"
-                  value={budget}
-                  onChange={(e) => setBudget(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 bg-white/90 border border-black/5 border-2 border-white/50 rounded-xl input-glow transition-all duration-300"
-                />
               </div>
             </div>
           </div>

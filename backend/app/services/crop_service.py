@@ -60,6 +60,23 @@ class CropService:
         return {"entrepreneur_opportunities": opportunities}
 
     def create_crop_plan(self, plan_data: CropPlanCreate, user_id: int):
+        # ── FEATURE ENGINEERING ──
+        # 1. Infer Soil Type
+        inferred_soil = "Loamy" # Default
+        texture = plan_data.soil_texture or ""
+        retention = plan_data.water_retention or ""
+        cracks = plan_data.cracking_behavior or ""
+        
+        if "Sticky" in texture or "Stays for long" in retention or "large cracks" in cracks:
+            inferred_soil = "Clay"
+        elif "Loose" in texture or "Drains quickly" in retention:
+            inferred_soil = "Sandy"
+        elif "Soft" in texture:
+            inferred_soil = "Loamy"
+            
+        if not plan_data.soil_type:
+            plan_data.soil_type = inferred_soil
+
         # Fetch weather ONCE at plan creation
         weather = get_current_weather(plan_data.location)
         rain_prob = weather.get("rain_probability", 0)
@@ -70,6 +87,13 @@ class CropService:
             estimated_rainfall = 900.0
         elif rain_prob < 20:
             estimated_rainfall = 500.0
+            
+        # 2. Adjust Moisture
+        rain_behavior = plan_data.rain_behavior or ""
+        if "Water gets logged" in rain_behavior:
+            estimated_rainfall *= 1.2
+        elif "Drains quickly" in rain_behavior or "Drains quickly" in retention:
+            estimated_rainfall *= 0.8
 
         new_plan = CropPlan(
             **plan_data.model_dump(), 
@@ -143,6 +167,20 @@ class CropService:
             soil_ph=soil_ph,
         )
         
+        # ── 5.5 Soil Insights Generation ──
+        moisture_indicator = "Medium"
+        if plan.rain_behavior and "logged" in plan.rain_behavior.lower():
+            moisture_indicator = "High"
+        elif plan.water_retention and "quickly" in plan.water_retention.lower():
+            moisture_indicator = "Low"
+            
+        soil_insight = {
+            "soil_type": plan.soil_type,
+            "moisture_level": moisture_indicator,
+            "climate": "Semi-humid" if estimated_rainfall > 1000 else "Semi-arid",
+            "explanation": f"Based on your soil texture and water retention, your land is best suited for crops compatible with {plan.soil_type.lower()} soil that require {moisture_indicator.lower()} moisture."
+        }
+        
         # ── 6. Fertilizer recommendation ──
         fertilizer = get_fertilizer_recommendation(
             crop_type=plan.crop_type,
@@ -183,6 +221,7 @@ class CropService:
             "yield_prediction": yield_data,
             "fertilizer_recommendation": fertilizer,
             "risk_reduction": risk_reduction,
+            "soil_insight": getattr(locals(), "soil_insight", None),
             "market_trend": {
                 "current_price_qt": base_price,
                 "trend": "upward",

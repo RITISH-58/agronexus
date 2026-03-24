@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Sprout, Briefcase, Landmark, Phone, ChevronRight, Wheat, TrendingUp, Star } from 'lucide-react';
+import { Search, Sprout, Briefcase, Landmark, Users, ChevronRight, Wheat, TrendingUp, Star } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 /* Unsplash agriculture images */
 const IMAGES = {
   wheat: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&q=80',
   rice: 'https://images.unsplash.com/photo-1536304993881-070f82905bae?w=600&q=80',
-  vegetables: 'https://images.unsplash.com/photo-1592921870789-04563d55041c?w=600&q=80',
+  vegetables: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=600&q=80',
   dairy: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&q=80',
   aerial: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&q=80',
   farm: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
@@ -45,13 +45,13 @@ const featureCards = [
     badge: 'Updated',
   },
   {
-    title: 'AgriVoice PRO',
-    desc: 'AI advice via phone call — no smartphone needed',
-    icon: Phone,
-    path: '/agrivoice',
-    img: IMAGES.tractor,
-    gradient: 'from-rose-600/90 to-rose-800/80',
-    badge: '📞 Voice AI',
+    title: 'Find Buyers',
+    desc: 'Connect with nearby buyers and sell your crops easily',
+    icon: Users,
+    path: '/buyers',
+    img: IMAGES.vegetables,
+    gradient: 'from-emerald-600/90 to-yellow-500/80',
+    badge: '🆕 MARKET',
   },
 ];
 

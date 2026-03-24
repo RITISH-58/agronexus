@@ -30,6 +30,15 @@ class CropPlan(Base):
     rainfall = Column(Float, nullable=False, default=800.0)
     wind_speed = Column(Float, nullable=False, default=12.0)
     
+    # Farmer-Friendly Observations
+    water_retention = Column(String, nullable=True)
+    soil_texture = Column(String, nullable=True)
+    cracking_behavior = Column(String, nullable=True)
+    water_req = Column(String, nullable=True)
+    crop_perf = Column(String, nullable=True)
+    soil_color = Column(String, nullable=True)
+    rain_behavior = Column(String, nullable=True)
+    
     created_at = Column(DateTime, default=datetime.utcnow)
 
     # Allow mapping back to the User model if needed

@@ -4,13 +4,23 @@ from datetime import datetime
 
 class CropPlanBase(BaseModel):
     crop_type: str
-    soil_type: str
+    soil_type: Optional[str] = None
     season: str
     land_acres: float
-    water_source: str
+    water_source: Optional[str] = None
     location: str
     sowing_date: str
     
+    # Feature Engineering Observations
+    water_retention: Optional[str] = None
+    soil_texture: Optional[str] = None
+    cracking_behavior: Optional[str] = None
+    water_req: Optional[str] = None
+    crop_perf: Optional[str] = None
+    soil_color: Optional[str] = None
+    rain_behavior: Optional[str] = None
+    
+    # Optional Specific Variables useful for precise ML
     nitrogen_level: Optional[float] = None
     phosphorus_level: Optional[float] = None
     potassium_level: Optional[float] = None
