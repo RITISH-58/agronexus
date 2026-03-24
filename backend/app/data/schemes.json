@@ -1,0 +1,202 @@
+[
+  {
+    "scheme_name": "PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)",
+    "description": "Income support to all landholding farmer families in the country.",
+    "states": ["All"],
+    "soil_types": ["All"],
+    "water_requirement": ["All"],
+    "recommended_crops": ["All"],
+    "benefits": "₹6,000 per year transferred directly to bank accounts.",
+    "official_link": "https://pmkisan.gov.in"
+  },
+  {
+    "scheme_name": "Soil Health Card Scheme",
+    "description": "Helps farmers to know their soil health and the recommended fertilizers.",
+    "states": ["All"],
+    "soil_types": ["All"],
+    "water_requirement": ["All"],
+    "recommended_crops": ["All"],
+    "benefits": "Free soil nutrient analysis and crop-wise fertilizer recommendations.",
+    "official_link": "https://www.soilhealth.dac.gov.in/"
+  },
+  {
+    "scheme_name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY)",
+    "description": "Focuses on providing end-to-end solutions in irrigation supply chain.",
+    "states": ["All"],
+    "soil_types": ["All"],
+    "water_requirement": ["Medium", "Poor", "Good"],
+    "recommended_crops": ["Sugarcane", "Paddy", "Cotton", "wheat", "Vegetables"],
+    "benefits": "Subsidies for drip/sprinkler irrigation systems (up to 55-100% depending on state).",
+    "official_link": "https://pmksy.gov.in"
+  },
+  {
+    "scheme_name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    "description": "Comprehensive insurance cover against failure of the crop.",
+    "states": ["All"],
+    "soil_types": ["All"],
+    "water_requirement": ["All"],
+    "recommended_crops": ["Rice", "Wheat", "Maize", "Cotton", "Millets", "Turmeric"],
+    "benefits": "Crop insurance at extremely low premium rates (1.5% - 2% for food crops, 5% for horticulture/commercial).",
+    "official_link": "https://pmfby.gov.in"
+  },
+  {
+    "scheme_name": "Agriculture Infrastructure Fund (AIF)",
+    "description": "Medium/long term debt financing for post-harvest management infrastructure.",
+    "states": ["All"],
+    "soil_types": ["All"],
+    "water_requirement": ["All"],
+    "recommended_crops": ["Tomato", "Turmeric", "Chili", "Maize", "Fruits", "Vegetables"],
+    "benefits": "3% interest subvention and credit guarantee up to ₹2 Crore loans.",
+    "official_link": "https://agriinfra.dac.gov.in"
+  },
+  {
+    "scheme_name": "Paramparagat Krishi Vikas Yojana (PKVY)",
+    "description": "Promotion of commercial organic farming.",
+    "states": ["All"],
+    "soil_types": ["Red", "Black", "Alluvial", "Laterite"],
+    "water_requirement": ["Good", "Medium"],
+    "recommended_crops": ["Millets", "Turmeric", "Pulses", "Vegetables", "Spices"],
+    "benefits": "Financial assistance of ₹50,000 per hectare for 3 years for organic inputs, certification, and marketing.",
+    "official_link": "https://pgsindia-ncof.gov.in/pkvy"
+  },
+  {
+    "scheme_name": "e-NAM (National Agriculture Market)",
+    "description": "Pan-India electronic trading portal networking APMCs.",
+    "states": ["All"],
+    "soil_types": ["All"],
+    "water_requirement": ["All"],
+    "recommended_crops": ["Cotton", "Turmeric", "Chili", "Rice", "Wheat"],
+    "benefits": "Transparent online trading, better price discovery, and integrated market access.",
+    "official_link": "https://enam.gov.in"
+  },
+  {
+    "scheme_name": "Rythu Bandhu",
+    "description": "Agriculture Investment Support Scheme for Telangana farmers.",
+    "states": ["Telangana"],
+    "soil_types": ["Red", "Black", "Laterite"],
+    "water_requirement": ["All"],
+    "recommended_crops": ["Rice", "Cotton", "Maize", "Turmeric", "Pulses"],
+    "benefits": "₹5,000 per acre per season (₹10,000 per year) towards initial investment needs.",
+    "official_link": "http://rythubandhu.telangana.gov.in"
+  },
+  {
+    "scheme_name": "Rythu Bharosa",
+    "description": "Financial assistance to farmer families including tenant farmers.",
+    "states": ["Andhra Pradesh"],
+    "soil_types": ["Red", "Black", "Alluvial", "Laterite"],
+    "water_requirement": ["All"],
+    "recommended_crops": ["Rice", "Cotton", "Chili", "Maize", "Sugarcane"],
+    "benefits": "₹13,500 per year (including PM-KISAN share) transferred to beneficiaries.",
+    "official_link": "https://ysrrythubharosa.ap.gov.in"
+  },
+  {
+    "scheme_name": "Rythu Bima",
+    "description": "Farmers Group Life Insurance Scheme for Telangana farmers.",
+    "states": ["Telangana"],
+    "soil_types": ["All"],
+    "water_requirement": ["All"],
+    "recommended_crops": ["All"],
+    "benefits": "₹5 Lakhs insurance cover for farmers aged 18 to 59 years in case of death.",
+    "official_link": "http://rythubima.telangana.gov.in"
+  },
+  {
+    "scheme_name": "PM KUSUM",
+    "description": "Scheme for setting up solar pumps and grid-connected solar power plants.",
+    "states": ["All"],
+    "soil_types": ["All"],
+    "water_requirement": ["Poor", "Medium"],
+    "recommended_crops": ["Millets", "Cotton", "Pulses"],
+    "benefits": "Up to 60% subsidy for providing standalone solar agriculture pumps.",
+    "official_link": "https://pmkusum.mnre.gov.in"
+  },
+  {
+    "scheme_name": "Kisan Credit Card (KCC)",
+    "description": "Provides farmers with timely access to credit for agricultural expenses.",
+    "states": ["All"],
+    "soil_types": ["All"],
+    "water_requirement": ["All"],
+    "recommended_crops": ["Rice", "Wheat", "Sugarcane", "Cotton", "Turmeric"],
+    "benefits": "Short term crop loans up to ₹3 Lakh at an effective interest rate of 4% per annum.",
+    "official_link": "https://www.pmindia.gov.in"
+  },
+  {
+    "scheme_name": "Mission for Integrated Development of Horticulture (MIDH)",
+    "description": "Holistic growth of the horticulture sector encompassing fruits, vegetables, root & tuber crops, mushrooms, spices.",
+    "states": ["All"],
+    "soil_types": ["Red", "Alluvial", "Black", "Laterite"],
+    "water_requirement": ["Good", "Medium"],
+    "recommended_crops": ["Tomato", "Chili", "Turmeric", "Fruits"],
+    "benefits": "Capital subsidy for nurseries, greenhouses, cold storages, packhouses, and mechanized tools.",
+    "official_link": "https://midh.gov.in"
+  },
+  {
+    "scheme_name": "National Food Security Mission (NFSM)",
+    "description": "To increase the production of rice, wheat, pulses, coarse cereals, and commercial crops.",
+    "states": ["All"],
+    "soil_types": ["Alluvial", "Black", "Red"],
+    "water_requirement": ["Medium", "Good"],
+    "recommended_crops": ["Rice", "Wheat", "Millets", "Pulses", "Cotton"],
+    "benefits": "Assistance for seeds, nutrients, mechanization, and demonstrations.",
+    "official_link": "https://nfsm.gov.in"
+  },
+  {
+    "scheme_name": "Sub-Mission on Agricultural Mechanization (SMAM)",
+    "description": "Promotes agricultural mechanization to boost efficiency and crop yield.",
+    "states": ["All"],
+    "soil_types": ["All"],
+    "water_requirement": ["All"],
+    "recommended_crops": ["All"],
+    "benefits": "Subsidy from 40% to 50% for purchasing tractors and modern agricultural equipment.",
+    "official_link": "https://agrimachinery.nic.in"
+  },
+  {
+    "scheme_name": "Telangana State Free Power to Agriculture",
+    "description": "Provides 24x7 free power supply to the agriculture sector.",
+    "states": ["Telangana"],
+    "soil_types": ["Red", "Black", "Laterite"],
+    "water_requirement": ["Medium", "Good"],
+    "recommended_crops": ["Paddy", "Sugarcane", "Turmeric", "Cotton"],
+    "benefits": "100% free electricity for agricultural pump sets.",
+    "official_link": "https://tstransco.in"
+  },
+  {
+    "scheme_name": "Pradhan Mantri Annadata Aay SanraksHan Abhiyan (PM-AASHA)",
+    "description": "Umbrella scheme aimed at ensuring remunerative prices to farmers for their produce.",
+    "states": ["All"],
+    "soil_types": ["All"],
+    "water_requirement": ["All"],
+    "recommended_crops": ["Pulses", "Oilseeds", "Cotton", "Maize"],
+    "benefits": "Guarantees Minimum Support Price (MSP) through procurement mechanisms.",
+    "official_link": "https://pib.gov.in/PressReleasePage.aspx?PRID=1545892"
+  },
+  {
+    "scheme_name": "National Mission on Edible Oils - Oil Palm (NMEO-OP)",
+    "description": "To boost domestic oilseed production and reduce import dependency.",
+    "states": ["Telangana", "Andhra Pradesh", "Karnataka", "Tamil Nadu", "All"],
+    "soil_types": ["Red", "Alluvial", "Laterite"],
+    "water_requirement": ["Good"],
+    "recommended_crops": ["Oil Palm"],
+    "benefits": "Financial assistance for planting material, cultivation, and harvesting tools.",
+    "official_link": "https://nmeo.gov.in"
+  },
+  {
+    "scheme_name": "KALIA Scheme",
+    "description": "Krushak Assistance for Livelihood and Income Augmentation.",
+    "states": ["Odisha"],
+    "soil_types": ["Red", "Alluvial", "Laterite"],
+    "water_requirement": ["All"],
+    "recommended_crops": ["Rice", "Millets", "Pulses", "Vegetables"],
+    "benefits": "₹10,000 per family per year for cultivation, plus livelihood support for landless farmers.",
+    "official_link": "https://kalia.odisha.gov.in"
+  },
+  {
+    "scheme_name": "Bhavantar Bhugtan Yojna",
+    "description": "Price deficit financing scheme to protect farmers from price crashes.",
+    "states": ["Madhya Pradesh", "Haryana", "All"],
+    "soil_types": ["Black", "Red", "Alluvial"],
+    "water_requirement": ["All"],
+    "recommended_crops": ["Pulses", "Oilseeds", "Millets", "Maize"],
+    "benefits": "Compensation for the difference between the Minimum Support Price (MSP) and the actual selling price in mandis.",
+    "official_link": "https://pib.gov.in/"
+  }
+]

@@ -1,0 +1,88 @@
+crop,market,state,price_per_quintal,min_price,max_price,date,demand_level
+Rice,Azadpur Mandi,Delhi,2200,2000,2500,2025-01,High
+Rice,Koyambedu Market,Tamil Nadu,2400,2100,2800,2025-01,Very High
+Rice,Market Yard Bangalore,Karnataka,2350,2050,2700,2025-01,High
+Rice,Guntur Market,Andhra Pradesh,2150,1950,2400,2025-01,High
+Wheat,Azadpur Mandi,Delhi,2200,2000,2500,2025-01,High
+Wheat,Indore Mandi,Madhya Pradesh,2100,1900,2350,2025-01,High
+Wheat,Hapur Mandi,Uttar Pradesh,2250,2050,2500,2025-01,High
+Maize,Davangere Market,Karnataka,1850,1650,2100,2025-01,Medium
+Maize,Nizamabad Market,Telangana,1800,1600,2050,2025-01,Medium
+Potato,Azadpur Mandi,Delhi,1200,800,1800,2025-01,Very High
+Potato,Kolkata Market,West Bengal,1100,750,1650,2025-01,Very High
+Tomato,Koyambedu Market,Tamil Nadu,2500,1200,4500,2025-01,Very High
+Tomato,Madanapalle Market,Andhra Pradesh,2200,1000,4000,2025-01,Very High
+Onion,Lasalgaon Market,Maharashtra,1800,1200,3000,2025-01,Very High
+Onion,Azadpur Mandi,Delhi,2000,1400,3200,2025-01,Very High
+Turmeric,Erode Market,Tamil Nadu,9500,8000,12000,2025-01,Very High
+Turmeric,Nizamabad Market,Telangana,8800,7500,11000,2025-01,High
+Chili,Guntur Market,Andhra Pradesh,12000,9000,16000,2025-01,Very High
+Chili,Byadgi Market,Karnataka,11500,8500,15000,2025-01,High
+Ginger,Cochin Market,Kerala,8500,6000,12000,2025-01,High
+Ginger,Siliguri Market,West Bengal,7800,5500,11000,2025-01,High
+Garlic,Rajkot Market,Gujarat,5500,4000,8000,2025-01,High
+Cotton,Rajkot Market,Gujarat,6200,5500,7200,2025-01,High
+Cotton,Adilabad Market,Telangana,5800,5200,6800,2025-01,Medium
+Sugarcane,Kolhapur Market,Maharashtra,350,300,420,2025-01,High
+Groundnut,Rajkot Market,Gujarat,5500,4800,6500,2025-01,High
+Groundnut,Kurnool Market,Andhra Pradesh,5200,4500,6200,2025-01,High
+Soybean,Indore Mandi,Madhya Pradesh,4200,3800,4800,2025-01,High
+Mustard,Jaipur Market,Rajasthan,5800,5200,6500,2025-01,High
+Coconut,Alappuzha Market,Kerala,2500,2000,3200,2025-01,High
+Banana,Salem Market,Tamil Nadu,1400,1000,2000,2025-01,High
+Banana,Jalgaon Market,Maharashtra,1300,900,1900,2025-01,Medium
+Mango,Ratnagiri Market,Maharashtra,4500,3000,8000,2025-01,Very High
+Mango,Malihabad Market,Uttar Pradesh,3500,2500,6000,2025-01,High
+Tea,Guwahati Auction,Assam,18000,12000,30000,2025-01,Very High
+Coffee,Chikmagalur Market,Karnataka,32000,25000,45000,2025-01,Very High
+Millets,Hyderabad Market,Telangana,2800,2200,3500,2025-01,High
+Pulses,Indore Mandi,Madhya Pradesh,5800,5000,6800,2025-01,High
+Cashew,Mangalore Market,Karnataka,85000,70000,120000,2025-01,Very High
+Honey,Delhi Market,Delhi,25000,20000,35000,2025-01,High
+Milk,Anand Market,Gujarat,4200,3800,4800,2025-01,Very High
+Mushroom,Pune Market,Maharashtra,12000,8000,18000,2025-01,High
+Black Pepper,Cochin Market,Kerala,45000,38000,55000,2025-01,Very High
+Cardamom,Vandanmedu Market,Kerala,120000,80000,180000,2025-01,Very High
+Cumin,Unjha Market,Gujarat,28000,22000,35000,2025-01,High
+Coriander,Kota Market,Rajasthan,8500,6000,12000,2025-01,Medium
+Pomegranate,Solapur Market,Maharashtra,6000,4000,10000,2025-01,High
+Grapes,Nashik Market,Maharashtra,4500,3000,8000,2025-01,High
+Apple,Shimla Market,Himachal Pradesh,8000,5000,15000,2025-01,Very High
+Orange,Nagpur Market,Maharashtra,3500,2500,5500,2025-01,High
+Guava,Allahabad Market,Uttar Pradesh,2500,1800,4000,2025-01,Medium
+Papaya,Pune Market,Maharashtra,1500,1000,2500,2025-01,Medium
+Litchi,Muzaffarpur Market,Bihar,8000,5000,15000,2025-01,High
+Jute,Kolkata Market,West Bengal,4500,3800,5500,2025-01,Medium
+Sesame,Rajkot Market,Gujarat,12000,10000,15000,2025-01,High
+Sunflower,Davangere Market,Karnataka,5500,4800,6500,2025-01,Medium
+Rubber,Kottayam Market,Kerala,15000,12000,19000,2025-01,Medium
+Arecanut,Shimoga Market,Karnataka,42000,35000,52000,2025-01,High
+Aloe Vera,Jaipur Market,Rajasthan,3000,2000,5000,2025-01,High
+Moringa,Coimbatore Market,Tamil Nadu,15000,10000,22000,2025-01,High
+Amla,Lucknow Market,Uttar Pradesh,2500,1800,4000,2025-01,Medium
+Tamarind,Hyderabad Market,Telangana,6000,4500,8500,2025-01,Medium
+Dragon Fruit,Pune Market,Maharashtra,20000,15000,30000,2025-01,Very High
+Strawberry,Mahabaleshwar Market,Maharashtra,25000,18000,40000,2025-01,High
+Flowers,Bangalore Flower Market,Karnataka,8000,5000,15000,2025-01,High
+Neem,Jodhpur Market,Rajasthan,1500,1000,2500,2025-01,Medium
+Bamboo,Guwahati Market,Assam,2000,1500,3000,2025-01,Medium
+Silk,Ramanagaram Market,Karnataka,350000,250000,500000,2025-01,High
+Fish,Visakhapatnam Market,Andhra Pradesh,15000,10000,25000,2025-01,Very High
+Prawn,Visakhapatnam Market,Andhra Pradesh,45000,30000,80000,2025-01,Very High
+Saffron,Srinagar Market,Jammu Kashmir,250000,200000,350000,2025-01,Very High
+Vanilla,Wayanad Market,Kerala,50000,35000,80000,2025-01,Very High
+Jackfruit,Thrissur Market,Kerala,2500,1500,4500,2025-01,Medium
+Date,Barmer Market,Rajasthan,8000,5000,12000,2025-01,Medium
+Walnut,Srinagar Market,Jammu Kashmir,60000,45000,80000,2025-01,High
+Almond,Srinagar Market,Jammu Kashmir,70000,55000,95000,2025-01,High
+Kiwi,Shimla Market,Himachal Pradesh,15000,10000,25000,2025-01,High
+Pineapple,Guwahati Market,Assam,3000,2000,5000,2025-01,Medium
+Watermelon,Bangalore Market,Karnataka,800,500,1500,2025-01,Medium
+Lemon,Vijayawada Market,Andhra Pradesh,4000,2500,6500,2025-01,High
+Fig,Pune Market,Maharashtra,12000,8000,20000,2025-01,High
+Sapota,Valsad Market,Gujarat,3000,2000,5000,2025-01,Medium
+Spirulina,Chennai Market,Tamil Nadu,120000,80000,180000,2025-01,High
+Ashwagandha,Neemuch Market,Madhya Pradesh,35000,25000,50000,2025-01,Very High
+Stevia,Pune Market,Maharashtra,80000,60000,120000,2025-01,High
+Cinnamon,Cochin Market,Kerala,25000,18000,35000,2025-01,High
+Avocado,Bangalore Market,Karnataka,30000,20000,50000,2025-01,Very High

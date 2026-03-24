@@ -1,0 +1,211 @@
+crop_name,category,state,annual_production_tons,area_hectares,yield_per_hectare,season,soil_types,water_requirement,growth_period_days
+Rice,Cereal,Andhra Pradesh,12500000,4200000,2976,Kharif,"Alluvial,Clay,Loamy",High,120
+Rice,Cereal,West Bengal,15200000,5400000,2815,Kharif,"Alluvial,Clay",High,120
+Rice,Cereal,Punjab,11800000,2900000,4069,Kharif,"Alluvial,Loamy",High,130
+Rice,Cereal,Tamil Nadu,7900000,1800000,4389,Kharif,"Alluvial,Red Soil,Clay",High,115
+Rice,Cereal,Uttar Pradesh,14500000,5800000,2500,Kharif,"Alluvial,Loamy",High,125
+Rice,Cereal,Bihar,8200000,3200000,2563,Kharif,"Alluvial,Clay",High,120
+Rice,Cereal,Odisha,7100000,3900000,1821,Kharif,"Alluvial,Red Soil",High,110
+Rice,Cereal,Karnataka,4200000,1500000,2800,Kharif,"Red Soil,Black Soil,Loamy",Medium,115
+Rice,Cereal,Telangana,6800000,1900000,3579,Kharif,"Black Soil,Red Soil,Alluvial",High,120
+Wheat,Cereal,Uttar Pradesh,35000000,9600000,3646,Rabi,"Alluvial,Loamy,Clay",Medium,135
+Wheat,Cereal,Punjab,18500000,3500000,5286,Rabi,"Alluvial,Loamy",Medium,140
+Wheat,Cereal,Madhya Pradesh,15200000,5800000,2621,Rabi,"Black Soil,Alluvial",Medium,130
+Wheat,Cereal,Rajasthan,11500000,3200000,3594,Rabi,"Sandy,Alluvial",Low,125
+Wheat,Cereal,Haryana,12800000,2500000,5120,Rabi,"Alluvial,Loamy",Medium,135
+Wheat,Cereal,Bihar,5800000,2200000,2636,Rabi,"Alluvial,Clay",Medium,130
+Maize,Cereal,Karnataka,4500000,1400000,3214,Kharif,"Red Soil,Black Soil,Loamy",Medium,100
+Maize,Cereal,Madhya Pradesh,3200000,1100000,2909,Kharif,"Black Soil,Alluvial",Medium,95
+Maize,Cereal,Bihar,3800000,800000,4750,Kharif,"Alluvial,Loamy",Medium,100
+Maize,Cereal,Rajasthan,2900000,950000,3053,Kharif,"Sandy,Alluvial",Low,95
+Maize,Cereal,Andhra Pradesh,3100000,800000,3875,Kharif,"Red Soil,Black Soil",Medium,100
+Millets,Cereal,Rajasthan,5200000,4800000,1083,Kharif,"Sandy,Red Soil,Loamy",Low,80
+Millets,Cereal,Maharashtra,2100000,1500000,1400,Kharif,"Black Soil,Red Soil",Low,75
+Millets,Cereal,Karnataka,2800000,2200000,1273,Kharif,"Red Soil,Sandy",Low,80
+Millets,Cereal,Madhya Pradesh,1500000,1200000,1250,Kharif,"Black Soil,Red Soil",Low,85
+Sorghum,Cereal,Maharashtra,3200000,2800000,1143,Kharif,"Black Soil,Red Soil",Low,90
+Sorghum,Cereal,Karnataka,2100000,1900000,1105,Kharif,"Red Soil,Black Soil",Low,95
+Barley,Cereal,Rajasthan,1800000,850000,2118,Rabi,"Sandy,Alluvial",Low,120
+Barley,Cereal,Uttar Pradesh,1200000,400000,3000,Rabi,"Alluvial,Loamy",Low,115
+Potato,Vegetable,Uttar Pradesh,15800000,600000,26333,Rabi,"Alluvial,Sandy,Loamy",Medium,90
+Potato,Vegetable,West Bengal,12500000,400000,31250,Rabi,"Alluvial,Loamy",Medium,85
+Potato,Vegetable,Bihar,7200000,320000,22500,Rabi,"Alluvial,Clay",Medium,90
+Potato,Vegetable,Gujarat,3800000,150000,25333,Rabi,"Sandy,Alluvial",Medium,85
+Potato,Vegetable,Punjab,2900000,100000,29000,Rabi,"Alluvial,Loamy",Medium,90
+Tomato,Vegetable,Andhra Pradesh,6200000,180000,34444,Kharif,"Red Soil,Black Soil,Loamy",Medium,75
+Tomato,Vegetable,Maharashtra,4500000,160000,28125,Kharif,"Black Soil,Red Soil",Medium,80
+Tomato,Vegetable,Karnataka,3800000,140000,27143,Kharif,"Red Soil,Loamy",Medium,75
+Tomato,Vegetable,Madhya Pradesh,2900000,120000,24167,Kharif,"Black Soil,Alluvial",Medium,80
+Onion,Vegetable,Maharashtra,9800000,550000,17818,Rabi,"Black Soil,Red Soil,Loamy",Medium,100
+Onion,Vegetable,Madhya Pradesh,3200000,150000,21333,Rabi,"Black Soil,Alluvial",Medium,95
+Onion,Vegetable,Karnataka,2800000,180000,15556,Rabi,"Red Soil,Black Soil",Medium,100
+Onion,Vegetable,Rajasthan,2100000,120000,17500,Rabi,"Sandy,Alluvial",Low,95
+Onion,Vegetable,Gujarat,1900000,100000,19000,Rabi,"Sandy,Alluvial",Medium,100
+Brinjal,Vegetable,West Bengal,3200000,120000,26667,Kharif,"Alluvial,Loamy,Clay",Medium,70
+Brinjal,Vegetable,Odisha,1800000,80000,22500,Kharif,"Alluvial,Red Soil",Medium,70
+Cabbage,Vegetable,West Bengal,2500000,60000,41667,Rabi,"Alluvial,Loamy",Medium,80
+Cauliflower,Vegetable,West Bengal,2800000,70000,40000,Rabi,"Alluvial,Loamy",Medium,80
+Peas,Vegetable,Uttar Pradesh,1500000,400000,3750,Rabi,"Alluvial,Loamy",Medium,80
+Carrot,Vegetable,Haryana,900000,25000,36000,Rabi,"Sandy,Loamy,Alluvial",Medium,75
+Chili,Spice,Andhra Pradesh,2500000,350000,7143,Kharif,"Red Soil,Black Soil,Loamy",Medium,90
+Chili,Spice,Telangana,1200000,150000,8000,Kharif,"Black Soil,Red Soil",Medium,90
+Chili,Spice,Karnataka,800000,120000,6667,Kharif,"Red Soil,Loamy",Medium,85
+Chili,Spice,Maharashtra,600000,80000,7500,Kharif,"Black Soil,Red Soil",Medium,90
+Turmeric,Spice,Telangana,850000,180000,4722,Kharif,"Red Soil,Black Soil,Loamy",Medium,240
+Turmeric,Spice,Andhra Pradesh,600000,100000,6000,Kharif,"Red Soil,Alluvial",Medium,240
+Turmeric,Spice,Tamil Nadu,450000,80000,5625,Kharif,"Red Soil,Loamy",Medium,240
+Turmeric,Spice,Maharashtra,380000,70000,5429,Kharif,"Black Soil,Red Soil",Medium,240
+Turmeric,Spice,Karnataka,250000,50000,5000,Kharif,"Red Soil,Loamy",Medium,240
+Ginger,Spice,Kerala,180000,25000,7200,Kharif,"Loamy,Sandy,Red Soil",High,240
+Ginger,Spice,Karnataka,120000,18000,6667,Kharif,"Red Soil,Loamy",High,240
+Ginger,Spice,Meghalaya,95000,15000,6333,Kharif,"Loamy,Red Soil",High,250
+Garlic,Spice,Madhya Pradesh,350000,120000,2917,Rabi,"Black Soil,Alluvial",Medium,130
+Garlic,Spice,Rajasthan,280000,100000,2800,Rabi,"Sandy,Alluvial",Low,130
+Coriander,Spice,Rajasthan,600000,450000,1333,Rabi,"Sandy,Alluvial,Loamy",Low,100
+Cumin,Spice,Rajasthan,520000,400000,1300,Rabi,"Sandy,Alluvial",Low,110
+Black Pepper,Spice,Kerala,65000,85000,765,Kharif,"Loamy,Red Soil,Laterite",High,365
+Cardamom,Spice,Kerala,25000,70000,357,Kharif,"Loamy,Red Soil",High,365
+Mustard,Oilseed,Rajasthan,4200000,3200000,1313,Rabi,"Sandy,Alluvial,Loamy",Low,120
+Mustard,Oilseed,Madhya Pradesh,1800000,900000,2000,Rabi,"Black Soil,Alluvial",Low,115
+Groundnut,Oilseed,Gujarat,3800000,1800000,2111,Kharif,"Sandy,Red Soil,Loamy",Low,110
+Groundnut,Oilseed,Rajasthan,2200000,1000000,2200,Kharif,"Sandy,Alluvial",Low,105
+Groundnut,Oilseed,Andhra Pradesh,2800000,1200000,2333,Kharif,"Red Soil,Sandy",Low,110
+Groundnut,Oilseed,Tamil Nadu,1500000,600000,2500,Kharif,"Red Soil,Sandy",Low,110
+Soybean,Oilseed,Madhya Pradesh,8500000,5500000,1545,Kharif,"Black Soil,Alluvial",Medium,100
+Soybean,Oilseed,Maharashtra,4200000,3800000,1105,Kharif,"Black Soil,Red Soil",Medium,100
+Soybean,Oilseed,Rajasthan,2100000,1200000,1750,Kharif,"Sandy,Alluvial",Low,95
+Sunflower,Oilseed,Karnataka,800000,600000,1333,Kharif,"Red Soil,Black Soil",Low,100
+Sunflower,Oilseed,Andhra Pradesh,500000,400000,1250,Kharif,"Red Soil,Black Soil",Low,100
+Sesame,Oilseed,Rajasthan,400000,380000,1053,Kharif,"Sandy,Alluvial",Low,85
+Sesame,Oilseed,West Bengal,250000,200000,1250,Kharif,"Alluvial,Loamy",Low,85
+Coconut,Plantation,Kerala,6500000,780000,8333,Summer,"Sandy,Loamy,Red Soil,Laterite",Medium,365
+Coconut,Plantation,Karnataka,4200000,520000,8077,Summer,"Red Soil,Sandy,Loamy",Medium,365
+Coconut,Plantation,Tamil Nadu,5800000,450000,12889,Summer,"Red Soil,Sandy,Loamy",Medium,365
+Coconut,Plantation,Andhra Pradesh,2100000,280000,7500,Summer,"Sandy,Red Soil",Medium,365
+Sugarcane,Cash Crop,Uttar Pradesh,180000000,2200000,81818,Kharif,"Alluvial,Loamy,Clay",High,300
+Sugarcane,Cash Crop,Maharashtra,85000000,1100000,77273,Kharif,"Black Soil,Alluvial",High,300
+Sugarcane,Cash Crop,Karnataka,42000000,450000,93333,Kharif,"Red Soil,Black Soil,Alluvial",High,300
+Sugarcane,Cash Crop,Tamil Nadu,35000000,350000,100000,Kharif,"Red Soil,Alluvial",High,300
+Cotton,Fiber,Gujarat,9500000,2800000,3393,Kharif,"Black Soil,Alluvial",Medium,160
+Cotton,Fiber,Maharashtra,7200000,4200000,1714,Kharif,"Black Soil,Red Soil",Medium,160
+Cotton,Fiber,Telangana,4500000,1800000,2500,Kharif,"Black Soil,Red Soil",Medium,160
+Cotton,Fiber,Rajasthan,3200000,1500000,2133,Kharif,"Sandy,Alluvial",Low,155
+Cotton,Fiber,Andhra Pradesh,2800000,800000,3500,Kharif,"Red Soil,Black Soil",Medium,160
+Jute,Fiber,West Bengal,8500000,600000,14167,Kharif,"Alluvial,Loamy,Clay",High,120
+Jute,Fiber,Bihar,2100000,180000,11667,Kharif,"Alluvial,Clay",High,120
+Banana,Fruit,Tamil Nadu,6500000,120000,54167,Summer,"Alluvial,Loamy,Clay,Red Soil",High,300
+Banana,Fruit,Gujarat,4200000,80000,52500,Summer,"Sandy,Alluvial",Medium,300
+Banana,Fruit,Maharashtra,4800000,100000,48000,Summer,"Black Soil,Alluvial",High,300
+Banana,Fruit,Andhra Pradesh,3500000,70000,50000,Summer,"Red Soil,Alluvial",High,300
+Banana,Fruit,Kerala,2800000,55000,50909,Summer,"Loamy,Sandy,Red Soil",High,300
+Mango,Fruit,Uttar Pradesh,4500000,270000,16667,Summer,"Alluvial,Loamy",Medium,365
+Mango,Fruit,Andhra Pradesh,5200000,350000,14857,Summer,"Red Soil,Black Soil,Alluvial",Medium,365
+Mango,Fruit,Karnataka,1800000,180000,10000,Summer,"Red Soil,Loamy",Medium,365
+Mango,Fruit,Maharashtra,2100000,150000,14000,Summer,"Black Soil,Red Soil",Medium,365
+Papaya,Fruit,Gujarat,1200000,30000,40000,Summer,"Sandy,Loamy,Alluvial",Medium,270
+Papaya,Fruit,Andhra Pradesh,900000,25000,36000,Summer,"Red Soil,Loamy",Medium,270
+Guava,Fruit,Uttar Pradesh,1100000,50000,22000,Summer,"Alluvial,Loamy",Medium,365
+Guava,Fruit,Madhya Pradesh,800000,35000,22857,Summer,"Black Soil,Alluvial",Medium,365
+Grapes,Fruit,Maharashtra,2800000,120000,23333,Summer,"Black Soil,Red Soil",High,365
+Grapes,Fruit,Karnataka,500000,25000,20000,Summer,"Red Soil,Loamy",High,365
+Orange,Fruit,Maharashtra,1200000,180000,6667,Summer,"Black Soil,Red Soil",Medium,365
+Orange,Fruit,Madhya Pradesh,800000,120000,6667,Summer,"Black Soil,Alluvial",Medium,365
+Apple,Fruit,Jammu Kashmir,1900000,160000,11875,Summer,"Loamy,Sandy",Medium,365
+Apple,Fruit,Himachal Pradesh,800000,110000,7273,Summer,"Loamy,Sandy",Medium,365
+Pomegranate,Fruit,Maharashtra,2800000,230000,12174,Summer,"Red Soil,Black Soil",Low,365
+Pomegranate,Fruit,Karnataka,500000,50000,10000,Summer,"Red Soil,Sandy",Low,365
+Lemon,Fruit,Andhra Pradesh,1500000,100000,15000,Summer,"Red Soil,Loamy,Sandy",Medium,365
+Lemon,Fruit,Maharashtra,800000,60000,13333,Summer,"Black Soil,Red Soil",Medium,365
+Watermelon,Fruit,Karnataka,1800000,80000,22500,Summer,"Sandy,Loamy,Red Soil",Medium,85
+Watermelon,Fruit,Uttar Pradesh,1200000,60000,20000,Summer,"Alluvial,Sandy",Medium,80
+Tea,Plantation,Assam,680000,320000,2125,Kharif,"Loamy,Red Soil,Laterite",High,365
+Tea,Plantation,West Bengal,280000,140000,2000,Kharif,"Loamy,Red Soil",High,365
+Tea,Plantation,Tamil Nadu,180000,70000,2571,Kharif,"Red Soil,Loamy",High,365
+Tea,Plantation,Kerala,65000,35000,1857,Kharif,"Red Soil,Loamy,Laterite",High,365
+Coffee,Plantation,Karnataka,250000,230000,1087,Kharif,"Red Soil,Loamy,Laterite",High,365
+Coffee,Plantation,Kerala,68000,85000,800,Kharif,"Red Soil,Loamy,Laterite",High,365
+Coffee,Plantation,Tamil Nadu,18000,35000,514,Kharif,"Red Soil,Loamy",High,365
+Rubber,Plantation,Kerala,550000,550000,1000,Kharif,"Laterite,Loamy,Red Soil",High,365
+Rubber,Plantation,Tripura,85000,80000,1063,Kharif,"Loamy,Red Soil",High,365
+Pulses,Legume,Madhya Pradesh,5200000,5000000,1040,Rabi,"Black Soil,Alluvial",Low,90
+Pulses,Legume,Rajasthan,3800000,4200000,905,Rabi,"Sandy,Alluvial",Low,85
+Pulses,Legume,Maharashtra,2500000,3800000,658,Rabi,"Black Soil,Red Soil",Low,90
+Pulses,Legume,Uttar Pradesh,2200000,2400000,917,Rabi,"Alluvial,Loamy",Low,90
+Pulses,Legume,Karnataka,1800000,2800000,643,Rabi,"Red Soil,Black Soil",Low,85
+Chickpea,Legume,Madhya Pradesh,4500000,3200000,1406,Rabi,"Black Soil,Alluvial",Low,100
+Chickpea,Legume,Rajasthan,2800000,2500000,1120,Rabi,"Sandy,Alluvial",Low,95
+Lentil,Legume,Uttar Pradesh,1200000,1500000,800,Rabi,"Alluvial,Loamy",Low,110
+Pigeon Pea,Legume,Maharashtra,1800000,3300000,545,Kharif,"Black Soil,Red Soil",Low,160
+Green Gram,Legume,Rajasthan,1500000,2800000,536,Kharif,"Sandy,Alluvial",Low,65
+Black Gram,Legume,Madhya Pradesh,900000,1800000,500,Kharif,"Black Soil,Alluvial",Low,75
+Cashew,Nut,Kerala,85000,100000,850,Summer,"Red Soil,Laterite,Sandy",Low,365
+Cashew,Nut,Maharashtra,250000,180000,1389,Summer,"Red Soil,Laterite",Low,365
+Cashew,Nut,Andhra Pradesh,120000,180000,667,Summer,"Red Soil,Sandy",Low,365
+Cashew,Nut,Goa,25000,55000,455,Summer,"Laterite,Sandy",Low,365
+Arecanut,Nut,Karnataka,580000,230000,2522,Summer,"Red Soil,Loamy,Laterite",Medium,365
+Arecanut,Nut,Kerala,120000,95000,1263,Summer,"Red Soil,Laterite",Medium,365
+Almond,Nut,Jammu Kashmir,15000,30000,500,Summer,"Loamy,Sandy",Medium,365
+Walnut,Nut,Jammu Kashmir,32000,90000,356,Summer,"Loamy,Sandy",Medium,365
+Honey,Apiculture,West Bengal,25000,0,0,Summer,"All",Low,365
+Honey,Apiculture,Bihar,18000,0,0,Summer,"All",Low,365
+Honey,Apiculture,Rajasthan,15000,0,0,Summer,"All",Low,365
+Honey,Apiculture,Uttar Pradesh,22000,0,0,Summer,"All",Low,365
+Honey,Apiculture,Karnataka,12000,0,0,Summer,"All",Low,365
+Milk,Dairy,Uttar Pradesh,30500000,0,0,Summer,"All",Medium,365
+Milk,Dairy,Rajasthan,23000000,0,0,Summer,"All",Medium,365
+Milk,Dairy,Madhya Pradesh,15200000,0,0,Summer,"All",Medium,365
+Milk,Dairy,Gujarat,14800000,0,0,Summer,"All",Medium,365
+Milk,Dairy,Andhra Pradesh,14500000,0,0,Summer,"All",Medium,365
+Milk,Dairy,Maharashtra,11800000,0,0,Summer,"All",Medium,365
+Milk,Dairy,Punjab,12500000,0,0,Summer,"All",Medium,365
+Milk,Dairy,Karnataka,8500000,0,0,Summer,"All",Medium,365
+Milk,Dairy,Bihar,10200000,0,0,Summer,"All",Medium,365
+Milk,Dairy,Tamil Nadu,8200000,0,0,Summer,"All",Medium,365
+Mushroom,Specialty,All India,180000,0,0,Summer,"All",Medium,45
+Aloe Vera,Medicinal,Rajasthan,120000,15000,8000,Summer,"Sandy,Red Soil",Low,365
+Aloe Vera,Medicinal,Gujarat,80000,10000,8000,Summer,"Sandy,Alluvial",Low,365
+Bamboo,Specialty,Assam,4500000,2800000,1607,Kharif,"Alluvial,Loamy,Red Soil",Medium,365
+Bamboo,Specialty,Madhya Pradesh,2800000,1500000,1867,Kharif,"Black Soil,Alluvial",Medium,365
+Silk,Sericulture,Karnataka,9000,0,0,Summer,"All",Medium,365
+Silk,Sericulture,Andhra Pradesh,4500,0,0,Summer,"All",Medium,365
+Fish,Aquaculture,Andhra Pradesh,4200000,0,0,Summer,"All",High,365
+Fish,Aquaculture,West Bengal,1900000,0,0,Summer,"All",High,365
+Prawn,Aquaculture,Andhra Pradesh,800000,0,0,Summer,"All",High,365
+Flowers,Floriculture,Karnataka,1200000,30000,40000,Summer,"Red Soil,Loamy",Medium,365
+Flowers,Floriculture,Tamil Nadu,800000,25000,32000,Summer,"Red Soil,Sandy",Medium,365
+Flowers,Floriculture,West Bengal,600000,18000,33333,Summer,"Alluvial,Loamy",Medium,365
+Rose,Floriculture,Tamil Nadu,200000,5000,40000,Summer,"Red Soil,Sandy,Loamy",Medium,365
+Jasmine,Floriculture,Tamil Nadu,150000,8000,18750,Summer,"Red Soil,Sandy",Medium,365
+Marigold,Floriculture,Karnataka,180000,10000,18000,Summer,"Red Soil,Loamy,Sandy",Low,365
+Neem,Medicinal,Rajasthan,250000,800000,313,Summer,"Sandy,All",Low,365
+Ashwagandha,Medicinal,Madhya Pradesh,8000,20000,400,Rabi,"Sandy,Red Soil,Loamy",Low,150
+Tulsi,Medicinal,Uttar Pradesh,12000,5000,2400,Kharif,"Alluvial,Loamy,Sandy",Low,90
+Moringa,Specialty,Tamil Nadu,120000,15000,8000,Summer,"Red Soil,Sandy,Loamy",Low,365
+Moringa,Specialty,Andhra Pradesh,85000,10000,8500,Summer,"Red Soil,Sandy",Low,365
+Spirulina,Specialty,Tamil Nadu,5000,0,0,Summer,"All",Medium,30
+Stevia,Specialty,Maharashtra,3000,2000,1500,Kharif,"Loamy,Sandy",Medium,120
+Vanilla,Spice,Kerala,400,500,800,Kharif,"Loamy,Red Soil",High,365
+Saffron,Spice,Jammu Kashmir,16,3800,4,Rabi,"Sandy,Loamy",Low,180
+Cinnamon,Spice,Kerala,3500,2800,1250,Kharif,"Red Soil,Loamy,Laterite",High,365
+Tamarind,Fruit,Andhra Pradesh,350000,200000,1750,Summer,"Red Soil,Black Soil",Low,365
+Tamarind,Fruit,Tamil Nadu,250000,150000,1667,Summer,"Red Soil,Sandy",Low,365
+Jackfruit,Fruit,Kerala,500000,98000,5102,Summer,"Loamy,Red Soil,Laterite",Medium,365
+Jackfruit,Fruit,Karnataka,350000,85000,4118,Summer,"Red Soil,Loamy",Medium,365
+Sapota,Fruit,Gujarat,800000,45000,17778,Summer,"Sandy,Loamy",Medium,365
+Sapota,Fruit,Karnataka,500000,30000,16667,Summer,"Red Soil,Loamy",Medium,365
+Litchi,Fruit,Bihar,300000,32000,9375,Summer,"Alluvial,Loamy",High,365
+Litchi,Fruit,West Bengal,80000,10000,8000,Summer,"Alluvial,Loamy",High,365
+Amla,Fruit,Uttar Pradesh,500000,95000,5263,Summer,"Alluvial,Loamy,Sandy",Low,365
+Amla,Fruit,Rajasthan,200000,50000,4000,Summer,"Sandy,Alluvial",Low,365
+Dragon Fruit,Specialty,Maharashtra,25000,5000,5000,Summer,"Sandy,Red Soil,Loamy",Low,365
+Dragon Fruit,Specialty,Karnataka,15000,3000,5000,Summer,"Red Soil,Sandy",Low,365
+Avocado,Fruit,Tamil Nadu,8000,2000,4000,Summer,"Loamy,Red Soil",Medium,365
+Avocado,Fruit,Karnataka,5000,1500,3333,Summer,"Red Soil,Loamy",Medium,365
+Strawberry,Fruit,Maharashtra,35000,4000,8750,Rabi,"Loamy,Sandy,Red Soil",Medium,120
+Strawberry,Fruit,Himachal Pradesh,8000,1000,8000,Rabi,"Loamy,Sandy",Medium,120
+Kiwi,Fruit,Himachal Pradesh,2000,600,3333,Summer,"Loamy,Sandy",Medium,365
+Kiwi,Fruit,Arunachal Pradesh,1500,500,3000,Summer,"Loamy,Red Soil",High,365
+Pineapple,Fruit,Assam,500000,25000,20000,Kharif,"Loamy,Sandy,Red Soil",High,365
+Pineapple,Fruit,Meghalaya,300000,15000,20000,Kharif,"Loamy,Red Soil",High,365
+Dates,Fruit,Rajasthan,30000,8000,3750,Summer,"Sandy",Low,365
+Fig,Fruit,Maharashtra,15000,3000,5000,Summer,"Black Soil,Red Soil",Low,365

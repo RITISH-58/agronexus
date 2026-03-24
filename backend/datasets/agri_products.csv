@@ -1,0 +1,143 @@
+product_name,product_category,raw_material,processing_type,value_addition_percent,shelf_life_days,market_size_crore,growth_rate_percent
+Rice Flour,Grain Processing,Rice,Milling,40,180,2500,12.5
+Puffed Rice,Grain Processing,Rice,Puffing,60,90,1800,15.0
+Rice Bran Oil,Oil Extraction,Rice,Extraction,120,365,3200,18.5
+Flattened Rice,Grain Processing,Rice,Flattening,50,120,1500,10.8
+Rice Vermicelli,Grain Processing,Rice,Extrusion,80,180,800,14.2
+Rice Starch,Grain Processing,Rice,Extraction,100,365,600,16.0
+Idli Dosa Batter,Ready Food,Rice,Fermentation,150,7,1200,22.0
+Wheat Flour,Grain Processing,Wheat,Milling,30,120,18000,8.5
+Semolina,Grain Processing,Wheat,Milling,45,180,3500,9.2
+Macaroni Pasta,Grain Processing,Wheat,Extrusion,120,365,2200,15.8
+Bread,Bakery,Wheat,Baking,200,5,12000,12.0
+Biscuits,Bakery,Wheat,Baking,300,180,45000,10.5
+Noodles,Grain Processing,Wheat,Extrusion,150,365,8500,18.0
+Cookies,Bakery,Wheat,Baking,350,120,8000,14.5
+Maize Starch,Grain Processing,Maize,Extraction,90,365,4800,12.0
+Cornflakes,Cereal,Maize,Flaking,250,180,3500,20.0
+Corn Oil,Oil Extraction,Maize,Extraction,140,365,1500,16.5
+Popcorn,Snacks,Maize,Popping,300,120,800,22.0
+Animal Feed,Feed,Maize,Grinding,30,90,15000,10.0
+Millet Flour,Grain Processing,Millets,Milling,50,120,1200,35.0
+Millet Cookies,Bakery,Millets,Baking,400,120,500,45.0
+Health Drinks,Beverages,Millets,Processing,500,365,800,40.0
+Potato Chips,Snacks,Potato,Frying,400,90,25000,15.0
+Potato Starch,Starch,Potato,Extraction,80,365,2800,12.0
+French Fries,Frozen Food,Potato,Frying,350,180,5500,22.0
+Dehydrated Potato,Preserved,Potato,Dehydration,120,365,1200,18.0
+Potato Flakes,Processed,Potato,Dehydration,150,365,800,20.0
+Tomato Paste,Sauce,Tomato,Concentration,200,365,3500,16.0
+Tomato Ketchup,Sauce,Tomato,Processing,350,365,5500,14.5
+Tomato Powder,Preserved,Tomato,Dehydration,280,365,800,25.0
+Sun-dried Tomato,Preserved,Tomato,Drying,400,365,400,30.0
+Onion Powder,Preserved,Onion,Dehydration,300,365,1500,22.0
+Onion Paste,Processed,Onion,Grinding,120,30,800,18.0
+Onion Flakes,Preserved,Onion,Dehydration,250,365,600,20.0
+Pickled Onion,Preserved,Onion,Pickling,180,365,300,15.0
+Chili Powder,Spice Processing,Chili,Grinding,100,365,8500,10.0
+Chili Flakes,Spice Processing,Chili,Crushing,120,365,2000,15.0
+Chili Sauce,Sauce,Chili,Processing,250,365,3200,18.5
+Chili Oil,Oil Extraction,Chili,Extraction,300,365,500,25.0
+Turmeric Powder,Spice Processing,Turmeric,Grinding,80,365,12000,14.0
+Curcumin Extract,Pharma,Turmeric,Extraction,1500,730,5500,28.0
+Turmeric Oil,Oil Extraction,Turmeric,Extraction,400,365,800,22.0
+Turmeric Capsules,Pharma,Turmeric,Processing,2000,730,3200,35.0
+Organic Turmeric,Organic,Turmeric,Certification,200,365,2500,30.0
+Ginger Powder,Spice Processing,Ginger,Grinding,120,365,3500,15.0
+Ginger Oil,Oil Extraction,Ginger,Extraction,500,365,800,20.0
+Ginger Candy,Confectionery,Ginger,Processing,400,180,500,25.0
+Garlic Powder,Spice Processing,Garlic,Grinding,200,365,2500,18.0
+Garlic Paste,Processed,Garlic,Grinding,100,90,1800,14.0
+Coconut Oil,Oil Extraction,Coconut,Extraction,80,365,18000,8.5
+Virgin Coconut Oil,Oil Extraction,Coconut,Cold Press,200,365,5500,25.0
+Coconut Milk,Beverages,Coconut,Extraction,150,90,2200,22.0
+Coconut Water,Beverages,Coconut,Packaging,120,30,3500,30.0
+Desiccated Coconut,Preserved,Coconut,Drying,130,365,1800,15.0
+Coir Products,Fiber,Coconut,Processing,60,730,4500,12.0
+Coconut Shell Charcoal,Fuel,Coconut,Carbonization,150,730,2000,18.0
+Paneer,Dairy,Milk,Coagulation,150,7,25000,14.0
+Ghee,Dairy,Milk,Clarification,120,365,35000,10.0
+Flavoured Milk,Dairy,Milk,Flavouring,100,15,8500,22.0
+Milk Powder,Dairy,Milk,Spray Drying,80,365,15000,12.0
+Cheese,Dairy,Milk,Fermentation,200,90,8000,18.0
+Yogurt,Dairy,Milk,Fermentation,80,15,12000,20.0
+Ice Cream,Dairy,Milk,Freezing,300,365,18000,15.0
+Butter,Dairy,Milk,Churning,100,90,8500,10.5
+Curd,Dairy,Milk,Fermentation,60,7,5000,12.0
+Organic Dairy,Dairy,Milk,Certification,180,15,2500,28.0
+Groundnut Oil,Oil Extraction,Groundnut,Extraction,80,365,12000,8.0
+Peanut Butter,Processed,Groundnut,Grinding,250,180,3500,25.0
+Roasted Peanuts,Snacks,Groundnut,Roasting,120,90,2800,14.0
+Groundnut Cake,Feed,Groundnut,Extraction,20,90,3000,8.5
+Soybean Oil,Oil Extraction,Soybean,Extraction,70,365,18000,10.0
+Soy Milk,Beverages,Soybean,Extraction,200,15,2500,22.0
+Tofu,Processed,Soybean,Coagulation,250,7,1200,28.0
+Soy Sauce,Sauce,Soybean,Fermentation,500,365,2000,15.0
+Soy Chunks,Processed,Soybean,Extrusion,180,180,5500,20.0
+Mustard Oil,Oil Extraction,Mustard,Extraction,60,365,15000,8.0
+Sunflower Oil,Oil Extraction,Sunflower,Extraction,70,365,12000,10.5
+Sesame Oil,Oil Extraction,Sesame,Extraction,100,365,5500,12.0
+Banana Chips,Snacks,Banana,Frying,200,90,3500,18.0
+Banana Powder,Preserved,Banana,Dehydration,150,365,800,22.0
+Banana Fiber,Fiber,Banana,Processing,300,730,500,35.0
+Banana Wine,Beverages,Banana,Fermentation,400,365,200,30.0
+Mango Pulp,Processed,Mango,Pulping,100,365,5500,14.0
+Mango Pickle,Preserved,Mango,Pickling,150,365,3000,10.0
+Mango Jam,Preserved,Mango,Processing,200,365,1200,15.0
+Dried Mango,Preserved,Mango,Dehydration,250,365,1500,22.0
+Mango Juice,Beverages,Mango,Extraction,180,180,8500,16.0
+Sugar,Processing,Sugarcane,Milling,40,730,95000,6.0
+Jaggery,Processing,Sugarcane,Boiling,60,365,15000,10.0
+Ethanol,Fuel,Sugarcane,Fermentation,100,730,25000,20.0
+Bagasse Board,Building,Sugarcane,Pressing,150,730,2000,18.0
+Cotton Yarn,Textile,Cotton,Spinning,80,730,45000,8.0
+Cotton Fabric,Textile,Cotton,Weaving,200,730,85000,10.0
+Surgical Cotton,Medical,Cotton,Processing,400,730,5500,14.0
+Jute Bags,Textile,Jute,Weaving,100,730,5000,8.0
+Jute Handicrafts,Handicraft,Jute,Weaving,500,730,2000,15.0
+Cashew Kernels,Nut Processing,Cashew,Shelling,120,180,12000,12.0
+Cashew Butter,Processed,Cashew,Grinding,300,180,800,25.0
+Honey Processing,Processed,Honey,Filtering,80,730,3500,18.0
+Honey Products,Processed,Honey,Processing,200,365,1500,22.0
+Mushroom Powder,Preserved,Mushroom,Dehydration,300,365,500,35.0
+Mushroom Pickles,Preserved,Mushroom,Pickling,400,180,200,30.0
+Aloe Vera Gel,Cosmetic,Aloe Vera,Extraction,500,365,3500,28.0
+Aloe Vera Juice,Beverages,Aloe Vera,Extraction,300,180,2000,25.0
+Tea Powder,Beverage Processing,Tea,CTC/Orthodox,60,365,18000,8.0
+Green Tea,Beverage Processing,Tea,Minimal,150,365,5500,22.0
+Herbal Tea,Beverage Processing,Tea,Blending,300,365,3000,30.0
+Instant Coffee,Beverage Processing,Coffee,Spray Dry,200,365,8500,15.0
+Ground Coffee,Beverage Processing,Coffee,Roasting,100,180,5500,12.0
+Rubber Sheets,Processing,Rubber,Sheeting,40,730,8000,8.0
+Rubber Products,Manufacturing,Rubber,Molding,200,730,15000,10.0
+Silk Fabric,Textile,Silk,Weaving,500,730,12000,8.0
+Moringa Powder,Superfood,Moringa,Dehydration,400,365,1500,40.0
+Moringa Oil,Oil Extraction,Moringa,Extraction,800,365,500,35.0
+Spirulina Powder,Superfood,Spirulina,Drying,600,365,800,45.0
+Neem Oil,Oil Extraction,Neem,Extraction,200,365,2500,15.0
+Neem Products,Organic,Neem,Processing,400,365,1200,20.0
+Ashwagandha Extract,Pharma,Ashwagandha,Extraction,1000,730,3000,30.0
+Amla Powder,Preserved,Amla,Dehydration,200,365,1500,18.0
+Amla Juice,Beverages,Amla,Extraction,250,180,1000,22.0
+Amla Candy,Confectionery,Amla,Processing,300,180,500,20.0
+Tamarind Paste,Processed,Tamarind,Processing,100,365,2500,12.0
+Tamarind Concentrate,Processed,Tamarind,Concentration,200,365,1500,15.0
+Rose Water,Cosmetic,Rose,Distillation,400,365,2000,18.0
+Essential Oils,Cosmetic,Flowers,Distillation,800,365,3500,22.0
+Flower Garlands,Floriculture,Flowers,Stringing,50,1,1500,10.0
+Dried Flowers,Decorative,Flowers,Drying,300,365,800,20.0
+Pomegranate Juice,Beverages,Pomegranate,Extraction,150,180,2500,22.0
+Pomegranate Peel Extract,Pharma,Pomegranate,Extraction,500,365,500,30.0
+Bamboo Furniture,Furniture,Bamboo,Crafting,300,730,5000,15.0
+Bamboo Charcoal,Fuel,Bamboo,Carbonization,200,730,1500,22.0
+Bamboo Products,Handicraft,Bamboo,Processing,250,730,3000,18.0
+Papaya Pulp,Processed,Papaya,Pulping,100,180,1000,18.0
+Papain Extract,Pharma,Papaya,Extraction,800,365,2500,22.0
+Pickles,Preserved,Multiple,Pickling,200,365,8500,10.0
+Organic Vegetables,Organic,Multiple,Certification,150,7,5000,25.0
+Vermicompost,Organic,Multiple,Composting,200,365,3500,20.0
+Biogas,Energy,Multiple,Anaerobic,100,365,2000,18.0
+Cold Storage,Service,Multiple,Storage,50,365,15000,20.0
+Seed Production,Agriculture,Multiple,Selection,200,365,8000,14.0
+Nursery,Service,Multiple,Propagation,300,365,3000,18.0
+Agritourism,Service,Multiple,Tourism,500,365,2500,25.0

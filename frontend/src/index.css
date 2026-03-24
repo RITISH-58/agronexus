@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-dark font-sans antialiased;
+    background: linear-gradient(170deg, #F7F8F2 0%, #E8F5E9 45%, #DDEEDB 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #c4d484; border-radius: 99px; }
+}
+
+@layer components {
+  /* ═══════════ GLASSMORPHISM CARD ═══════════ */
+  .glass {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    @apply rounded-2xl;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* ═══════════ CARD HOVER / TAP ═══════════ */
+  .card-hover {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10);
+  }
+  .card-hover:active {
+    transform: scale(0.98);
+  }
+
+  /* ═══════════ ALERT GLOW ═══════════ */
+  .glow-alert-high {
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.18), 0 2px 8px rgba(239, 68, 68, 0.10);
+  }
+
+  /* ═══════════ MOBILE CARD ═══════════ */
+  .card-mobile {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    @apply rounded-3xl overflow-hidden;
+    transition: all 0.3s ease;
+  }
+  .card-mobile:active {
+    transform: scale(0.98);
+  }
+  .card-mobile:hover {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px) scale(1.01);
+  }
+
+  /* ═══════════ IMAGE OVERLAY CARD ═══════════ */
+  .img-card {
+    @apply relative overflow-hidden rounded-3xl;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+  .img-card::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.05) 50%, transparent 100%);
+    pointer-events: none;
+  }
+  .img-card img {
+    @apply w-full h-full object-cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .img-card:hover img {
+    transform: scale(1.06);
+  }
+
+  /* ═══════════ SKELETON LOADER ═══════════ */
+  .skeleton-card {
+    @apply rounded-2xl;
+    background: linear-gradient(90deg,
+      rgba(255,255,255,0.5) 0%,
+      rgba(230,240,230,0.6) 40%,
+      rgba(255,255,255,0.5) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.8s ease-in-out infinite;
+  }
+
+  .shimmer-skeleton {
+    background: linear-gradient(90deg, rgba(240,240,240,0.6) 25%, rgba(225,225,225,0.8) 50%, rgba(240,240,240,0.6) 75%);
+    background-size: 200% 100%;
+    @apply animate-shimmer rounded-2xl;
+  }
+
+  /* ═══════════ STAGGERED ANIMATIONS ═══════════ */
+  .stagger-card {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .stagger-1 { animation-delay: 0.05s; }
+  .stagger-2 { animation-delay: 0.12s; }
+  .stagger-3 { animation-delay: 0.19s; }
+  .stagger-4 { animation-delay: 0.26s; }
+  .stagger-5 { animation-delay: 0.33s; }
+  .stagger-6 { animation-delay: 0.40s; }
+  .stagger-7 { animation-delay: 0.47s; }
+  .stagger-8 { animation-delay: 0.54s; }
+
+  /* ═══════════ INPUTS ═══════════ */
+  .input-mobile {
+    @apply w-full px-4 py-3.5 bg-white/80 border border-black/5 shadow-[0_2px_10px_rgba(0,0,0,0.02)] rounded-2xl text-dark font-medium;
+    @apply focus:border-leaf-400 focus:ring-2 focus:ring-leaf-400/20 focus:outline-none focus:bg-white;
+    transition: all 0.25s ease;
+  }
+
+  /* ═══════════ BUTTONS ═══════════ */
+  .btn-primary {
+    @apply px-6 py-3.5 bg-gradient-to-r from-leaf-600 to-olive-500 text-white font-bold rounded-2xl shadow-lg;
+    @apply hover:shadow-[0_8px_25px_rgba(76,175,80,0.3)] active:scale-95;
+    transition: all 0.25s ease;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3.5 bg-white border border-black/5 shadow-[0_4px_15px_rgba(0,0,0,0.04)] text-dark font-semibold rounded-2xl;
+    @apply hover:bg-cream-50 active:scale-95;
+    transition: all 0.25s ease;
+  }
+
+  /* ═══════════ COMPANION CHIP ═══════════ */
+  .crop-chip {
+    @apply px-4 py-2.5 rounded-xl font-semibold text-sm;
+    background: linear-gradient(135deg, rgba(46,125,50,0.08), rgba(102,187,106,0.15));
+    border: 1px solid rgba(46,125,50,0.15);
+    color: #2e7d32;
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: default;
+  }
+  .crop-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(46,125,50,0.15);
+    background: linear-gradient(135deg, rgba(46,125,50,0.12), rgba(102,187,106,0.22));
+  }
+  .crop-chip:active {
+    transform: scale(0.96);
+  }
+
+  /* ═══════════ SAFE AREA ═══════════ */
+  .pb-safe {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* ═══════════ BADGES ═══════════ */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold border;
+  }
+  .badge-green { @apply bg-leaf-50 text-leaf-700 border-leaf-100; }
+  .badge-gold { @apply bg-wheat-50 text-wheat-700 border-wheat-200; }
+  .badge-red { @apply bg-red-50 text-red-700 border-red-100; }
+  .badge-blue { @apply bg-blue-50 text-blue-700 border-blue-100; }
+
+  /* ═══════════ HEADERS ═══════════ */
+  .section-header {
+    @apply text-lg font-extrabold text-dark tracking-tight;
+  }
+}
