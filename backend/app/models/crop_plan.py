@@ -24,6 +24,12 @@ class CropPlan(Base):
     potassium_level = Column(Float, nullable=True)
     soil_ph = Column(Float, nullable=True)
     
+    # Store weather fetched once at plan creation
+    temperature = Column(Float, nullable=False, default=28.0)
+    humidity = Column(Float, nullable=False, default=65.0)
+    rainfall = Column(Float, nullable=False, default=800.0)
+    wind_speed = Column(Float, nullable=False, default=12.0)
+    
     created_at = Column(DateTime, default=datetime.utcnow)
 
     # Allow mapping back to the User model if needed

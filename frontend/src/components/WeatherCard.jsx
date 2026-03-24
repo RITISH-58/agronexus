@@ -1,11 +1,37 @@
 import React from 'react';
 import { Droplets, Wind, CloudRain, Cloud, Thermometer } from 'lucide-react';
 
-const WeatherCard = ({ weather, plan }) => {
+const WeatherCard = ({ weather, plan, compact = false }) => {
   if (!weather) return (
     <div className="skeleton-card h-20 w-full rounded-xl" />
   );
 
+  // ── Compact single-row strip ──
+  if (compact) {
+    return (
+      <div className="flex items-center gap-3 flex-wrap mt-1">
+        <div className="flex items-center gap-1 text-[11px] font-semibold text-gray-800">
+          <Thermometer className="w-3 h-3 text-orange-500" />
+          {weather.temperature}°C
+        </div>
+        <div className="flex items-center gap-1 text-[11px] font-semibold text-blue-700">
+          <Droplets className="w-3 h-3" />
+          {weather.humidity}%
+        </div>
+        <div className="flex items-center gap-1 text-[11px] font-semibold text-blue-600">
+          <CloudRain className="w-3 h-3" />
+          {weather.rain_probability}%
+        </div>
+        <div className="flex items-center gap-1 text-[11px] font-semibold text-gray-700">
+          <Wind className="w-3 h-3" />
+          {weather.wind_speed} km/h
+        </div>
+        <span className="text-[10px] text-gray-500 capitalize">{weather.condition}</span>
+      </div>
+    );
+  }
+
+  // ── Full layout (unchanged) ──
   return (
     <div className="mt-1">
       {/* Temperature highlight row */}

@@ -1,5 +1,10 @@
+import os
 import random
+import requests
+from dotenv import load_dotenv
 from datetime import datetime, timedelta
+
+load_dotenv() # Force reload of the .env file so the API key is picked up without a server restart
 
 # --- India-only validation ---
 INDIA_STATES = [
@@ -38,21 +43,46 @@ def is_india_location(location: str) -> bool:
     return True  # Be permissive — assume India unless proven otherwise
 
 
-def get_current_weather(location: str = "Hyderabad"):
+def _get_mock_current(location: str):
     return {
         "location": location,
-        "temperature": round(random.uniform(18.0, 40.0), 1),
-        "humidity": random.randint(30, 95),
-        "wind_speed": round(random.uniform(1.0, 25.0), 1),
-        "rain_probability": random.randint(0, 100),
-        "cloud_coverage": random.randint(0, 100),
-        "uv_index": round(random.uniform(1.0, 12.0), 1),
-        "condition": random.choice(["Sunny", "Cloudy", "Rainy", "Partly Cloudy", "Overcast", "Thunderstorms"]),
+        "temperature": 28.5,
+        "humidity": 65,
+        "wind_speed": 12.0,
+        "rain_probability": 20,
+        "cloud_coverage": 30,
+        "uv_index": 5.0,
+        "condition": "Partly Cloudy",
         "timestamp": datetime.now().isoformat()
     }
 
+def get_current_weather(location: str = "Hyderabad"):
+    api_key = os.getenv("OPENWEATHER_API_KEY")
+    if not api_key:
+        return _get_mock_current(location)
 
-def get_weather_forecast(location: str = "Hyderabad", days: int = 7):
+    try:
+        url = f"https://api.openweathermap.org/data/2.5/weather?q={location},in&appid={api_key}&units=metric"
+        response = requests.get(url, timeout=5)
+        if response.status_code == 200:
+            data = response.json()
+            return {
+                "location": data.get("name", location),
+                "temperature": round(data["main"]["temp"], 1),
+                "humidity": data["main"]["humidity"],
+                "wind_speed": round(data["wind"]["speed"] * 3.6, 1), # m/s to km/h
+                "rain_probability": data.get("clouds", {}).get("all", 0), # proxy for cloud/rain prob
+                "cloud_coverage": data.get("clouds", {}).get("all", 0),
+                "uv_index": 5.0, # OM doesn't provide UV in standard free endpoint
+                "condition": data["weather"][0]["main"],
+                "timestamp": datetime.now().isoformat()
+            }
+    except Exception:
+        pass
+        
+    return _get_mock_current(location)
+
+def _get_mock_forecast(location: str, days: int):
     forecast = []
     base_date = datetime.now()
     for i in range(days):
@@ -60,15 +90,76 @@ def get_weather_forecast(location: str = "Hyderabad", days: int = 7):
         forecast.append({
             "date": forecast_date.strftime("%Y-%m-%d"),
             "day_name": forecast_date.strftime("%A"),
-            "temperature_min": round(random.uniform(12.0, 24.0), 1),
-            "temperature_max": round(random.uniform(26.0, 42.0), 1),
-            "humidity": random.randint(35, 95),
-            "rainfall_mm": round(random.uniform(0.0, 60.0), 1) if random.random() > 0.4 else 0.0,
-            "wind_speed": round(random.uniform(2.0, 30.0), 1),
-            "uv_index": round(random.uniform(2.0, 11.0), 1),
-            "condition": random.choice(["Sunny", "Cloudy", "Rainy", "Scattered Showers", "Overcast", "Thunderstorms"])
+            "temperature_min": 22.0,
+            "temperature_max": 32.0,
+            "humidity": 60,
+            "rainfall_mm": 0.0,
+            "wind_speed": 10.0,
+            "uv_index": 6.0,
+            "condition": "Sunny"
         })
     return forecast
+
+def get_weather_forecast(location: str = "Hyderabad", days: int = 7):
+    api_key = os.getenv("OPENWEATHER_API_KEY")
+    if not api_key:
+        return _get_mock_forecast(location, days)
+
+    try:
+        # Free API provides 5 day / 3 hour forecast
+        url = f"https://api.openweathermap.org/data/2.5/forecast?q={location},in&appid={api_key}&units=metric"
+        response = requests.get(url, timeout=5)
+        if response.status_code == 200:
+            data = response.json()
+            # Aggregate 3-hour chunks into daily summaries
+            daily_data = {}
+            for item in data["list"]:
+                date_str = item["dt_txt"].split(" ")[0]
+                if date_str not in daily_data:
+                    daily_data[date_str] = {
+                        "date": date_str,
+                        "day_name": datetime.strptime(date_str, "%Y-%m-%d").strftime("%A"),
+                        "temps": [],
+                        "humidities": [],
+                        "rains": [],
+                        "winds": [],
+                        "conditions": []
+                    }
+                day = daily_data[date_str]
+                day["temps"].append(item["main"]["temp"])
+                day["humidities"].append(item["main"]["humidity"])
+                day["winds"].append(item["wind"]["speed"])
+                # Add up rain
+                rain = item.get("rain", {}).get("3h", 0)
+                day["rains"].append(rain)
+                day["conditions"].append(item["weather"][0]["main"])
+            
+            # Reduce to final format
+            forecast = []
+            for date_str, items in list(daily_data.items())[:days]:
+                # Pick most common condition
+                cond = max(set(items["conditions"]), key=items["conditions"].count)
+                forecast.append({
+                    "date": date_str,
+                    "day_name": items["day_name"],
+                    "temperature_min": round(min(items["temps"]), 1),
+                    "temperature_max": round(max(items["temps"]), 1),
+                    "humidity": round(sum(items["humidities"]) / len(items["humidities"])),
+                    "rainfall_mm": round(sum(items["rains"]), 1),
+                    "wind_speed": round((sum(items["winds"]) / len(items["winds"])) * 3.6, 1),
+                    "uv_index": 5.0,
+                    "condition": cond
+                })
+            
+            # If API gave fewer days than requested due to 5-day limit, fill the rest
+            while len(forecast) < days:
+                forecast.append(_get_mock_forecast(location, 1)[0])
+                
+            return forecast
+    except Exception:
+        pass
+
+    return _get_mock_forecast(location, days)
 
 
 def generate_weather_alerts(forecast_data: list):

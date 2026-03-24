@@ -4,7 +4,8 @@ import { useAuth } from '../context/AuthContext';
 import {
     ChevronLeft, Calendar, MapPin, Ruler, Droplets,
     Sprout, AlertTriangle, ShieldAlert, BarChart3,
-    ShieldCheck
+    ShieldCheck, Lightbulb, ChevronDown, ChevronUp,
+    TrendingUp, Eye, Zap
 } from 'lucide-react';
 import YieldPredictionCard from '../components/YieldPredictionCard';
 import FertilizerCard from '../components/FertilizerCard';
@@ -27,6 +28,7 @@ const CropDashboard = () => {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(null);
     const [error, setError] = useState('');
+    const [alertsExpanded, setAlertsExpanded] = useState(false);
 
     useEffect(() => {
         const fetchDashboardData = async () => {
@@ -53,15 +55,11 @@ const CropDashboard = () => {
     /* ─── SKELETON LOADING STATE ─── */
     if (loading) {
         return (
-            <div className="px-4 pt-6 pb-10 space-y-4">
-                <SkeletonCard height="h-36" />
+            <div className="px-3 pt-3 pb-6 space-y-2">
                 <SkeletonCard height="h-28" />
-                <SkeletonCard height="h-64" />
-                <SkeletonCard height="h-56" />
-                <SkeletonCard height="h-48" />
-                <SkeletonCard height="h-56" />
-                <SkeletonCard height="h-32" />
-                <SkeletonCard height="h-24" />
+                <SkeletonCard height="h-16" />
+                <SkeletonCard height="h-20" />
+                <SkeletonCard height="h-16" />
             </div>
         );
     }
@@ -69,7 +67,7 @@ const CropDashboard = () => {
     /* ─── ERROR STATE ─── */
     if (error) {
         return (
-            <div className="px-4 pt-10">
+            <div className="px-3 pt-10">
                 <div className="glass rounded-2xl p-8 text-center">
                     <AlertTriangle className="w-12 h-12 mx-auto mb-4 text-red-400 opacity-80" />
                     <p className="text-lg font-bold text-gray-800">{t('error_loading')}</p>
@@ -97,75 +95,117 @@ const CropDashboard = () => {
         low:    { border: 'border-l-yellow-400',  bg: 'bg-yellow-50/80', text: 'text-yellow-700', badge: 'bg-yellow-100 text-yellow-700', glow: '' },
     };
 
-    return (
-        <div className="px-4 pt-4 pb-10" style={{ minHeight: '100vh' }}>
+    // Extract top recommendation for Smart Insight
+    const topRecommendation = yield_prediction?.recommendations?.[0];
+    const alertCount = weather_alerts?.length || 0;
 
-            {/* ═══════ 1. HEADER CARD ═══════ */}
-            <div className="stagger-card stagger-1 glass rounded-2xl p-4 mb-4">
+    // Yield quality badge
+    const yieldRatio = yield_prediction ? (yield_prediction.expected_yield_per_acre / (yield_prediction.avg_regional_yield || 1)) : 0;
+    let yieldLabel = 'Below Avg';
+    let yieldColor = 'text-red-600';
+    if (yieldRatio >= 1.1) { yieldLabel = 'Excellent'; yieldColor = 'text-green-600'; }
+    else if (yieldRatio >= 0.9) { yieldLabel = 'Good'; yieldColor = 'text-green-600'; }
+    else if (yieldRatio >= 0.75) { yieldLabel = 'Average'; yieldColor = 'text-amber-600'; }
+
+    // Market trend
+    const marketChange = market_trend?.percentage_change || 0;
+    const marketPrice = market_trend?.current_price_qt || 0;
+
+    return (
+        <div className="px-3 pt-3 pb-6" style={{ minHeight: '100vh' }}>
+
+            {/* ═══════ 1. COMPACT HEADER ═══════ */}
+            <div className="stagger-card stagger-1 glass rounded-2xl p-3 mb-2">
                 {/* Top row: back + crop name */}
-                <div className="flex items-center gap-3 mb-3">
-                    <Link to="/crop-plan" className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/90 border border-black/5 active:scale-90 transition-transform">
-                        <ChevronLeft className="w-5 h-5 text-gray-800" />
+                <div className="flex items-center gap-2 mb-2">
+                    <Link to="/crop-plan" className="w-8 h-8 flex items-center justify-center rounded-xl bg-white/90 border border-black/5 active:scale-90 transition-transform">
+                        <ChevronLeft className="w-4 h-4 text-gray-800" />
                     </Link>
-                    <div className="bg-gradient-to-br from-green-500 to-green-700 p-2 rounded-xl">
-                        <Sprout className="w-5 h-5 text-white" />
+                    <div className="bg-gradient-to-br from-green-500 to-green-700 p-1.5 rounded-lg">
+                        <Sprout className="w-4 h-4 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
-                        <h1 className="text-lg font-black text-gray-800 truncate">{plan.crop_type} {t('intelligence')}</h1>
-                        <p className="text-[11px] text-green-600 font-semibold">{t('plan_num')}{plan.plan_id}</p>
+                        <h1 className="text-base font-black text-gray-800 truncate">{plan.crop_type} {t('intelligence')}</h1>
+                        <p className="text-[10px] text-green-600 font-semibold">{t('plan_num')}{plan.plan_id}</p>
                     </div>
                 </div>
 
-                {/* Weather + Location summary */}
-                <WeatherCard weather={weather} plan={plan} />
+                {/* Compact weather strip */}
+                <WeatherCard weather={weather} plan={plan} compact={true} />
 
-                {/* Meta pills */}
-                <div className="flex flex-wrap gap-2 mt-3">
-                    <div className="flex items-center gap-1.5 bg-white/85 border border-black/5 px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-800">
-                        <MapPin className="w-3.5 h-3.5 text-green-500" />
+                {/* Compact farm detail chips — 2 rows */}
+                <div className="flex flex-wrap gap-1.5 mt-2">
+                    <div className="flex items-center gap-1 bg-white/85 border border-black/5 px-2 py-1 rounded-lg text-[10px] font-semibold text-gray-800">
+                        <MapPin className="w-3 h-3 text-green-500" />
                         {plan.location}
                     </div>
-                    <div className="flex items-center gap-1.5 bg-white/85 border border-black/5 px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-800">
-                        <Ruler className="w-3.5 h-3.5 text-green-500" />
+                    <div className="flex items-center gap-1 bg-white/85 border border-black/5 px-2 py-1 rounded-lg text-[10px] font-semibold text-gray-800">
+                        <Ruler className="w-3 h-3 text-green-500" />
                         {plan.land_acres} Acres
                     </div>
-                    <div className="flex items-center gap-1.5 bg-white/85 border border-black/5 px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-800">
-                        <Calendar className="w-3.5 h-3.5 text-green-500" />
+                    <div className="flex items-center gap-1 bg-white/85 border border-black/5 px-2 py-1 rounded-lg text-[10px] font-semibold text-gray-800">
+                        <Calendar className="w-3 h-3 text-green-500" />
                         {t('sown')} {plan.sowing_date}
                     </div>
-                    <div className="flex items-center gap-1.5 bg-white/85 border border-black/5 px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-800">
-                        <Droplets className="w-3.5 h-3.5 text-blue-400" />
-                        {plan.water_source} {t('water')}
+                    <div className="flex items-center gap-1 bg-white/85 border border-black/5 px-2 py-1 rounded-lg text-[10px] font-semibold text-gray-800">
+                        <Droplets className="w-3 h-3 text-blue-400" />
+                        {plan.water_source}
                     </div>
                 </div>
             </div>
 
-            {/* ═══════ 2. WARNING ALERTS ═══════ */}
-            <div className="stagger-card stagger-2 glass rounded-2xl p-4 mb-4">
-                <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
-                    <ShieldAlert className="w-4 h-4 text-red-500" />
-                    {t('warning_alerts')}
-                </h3>
-                {(!weather_alerts || weather_alerts.length === 0) ? (
-                    <div className="bg-green-50/80 text-green-700 text-xs p-3 rounded-xl border border-green-100/50 flex items-center gap-2">
-                        <ShieldCheck className="w-4 h-4" />
-                        {t('safe_conditions')}
+            {/* ═══════ 2. SMART INSIGHT CARD ═══════ */}
+            {topRecommendation && (
+                <div className="stagger-card stagger-2 glass rounded-2xl p-3 mb-2">
+                    <div className="flex items-center gap-2 mb-1.5">
+                        <div className="bg-gradient-to-br from-amber-400 to-orange-500 p-1.5 rounded-lg">
+                            <Lightbulb className="w-4 h-4 text-white" />
+                        </div>
+                        <h3 className="text-sm font-bold text-gray-800">Smart Insight</h3>
                     </div>
-                ) : (
-                    <div className="space-y-2">
+                    <p className="text-xs text-gray-700 leading-snug line-clamp-2">
+                        <span className="font-bold">{topRecommendation.title}:</span> {topRecommendation.detail}
+                    </p>
+                </div>
+            )}
+
+
+
+            {/* ═══════ 5. COLLAPSIBLE WARNING ALERTS ═══════ */}
+            <div className="stagger-card stagger-5 glass rounded-2xl p-3 mb-2">
+                <button
+                    onClick={() => setAlertsExpanded(!alertsExpanded)}
+                    className="w-full flex items-center justify-between"
+                >
+                    <div className="flex items-center gap-2">
+                        <ShieldAlert className="w-4 h-4 text-red-500" />
+                        <span className="text-sm font-bold text-gray-800">
+                            {alertCount > 0 ? `⚠️ ${alertCount} Alert${alertCount > 1 ? 's' : ''}` : '✅ No Alerts'}
+                        </span>
+                    </div>
+                    {alertCount > 0 && (
+                        alertsExpanded
+                            ? <ChevronUp className="w-4 h-4 text-gray-500" />
+                            : <ChevronDown className="w-4 h-4 text-gray-500" />
+                    )}
+                </button>
+
+                {/* Expanded alert content */}
+                {alertsExpanded && alertCount > 0 && (
+                    <div className="space-y-2 mt-2 pt-2 border-t border-gray-200/50">
                         {weather_alerts.map((alert, idx) => {
                             const sev = alertSeverity(alert.type);
                             const s = severityStyles[sev];
                             return (
-                                <div key={idx} className={`${s.bg} border-l-4 ${s.border} p-3 rounded-xl ${s.glow}`}>
-                                    <div className="flex items-center gap-2 mb-1">
-                                        <AlertTriangle className={`w-3.5 h-3.5 ${s.text}`} />
-                                        <span className={`text-xs font-bold ${s.text}`}>{alert.type}</span>
-                                        <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${s.badge}`}>{sev.toUpperCase()}</span>
+                                <div key={idx} className={`${s.bg} border-l-4 ${s.border} p-2.5 rounded-xl ${s.glow}`}>
+                                    <div className="flex items-center gap-2 mb-0.5">
+                                        <AlertTriangle className={`w-3 h-3 ${s.text}`} />
+                                        <span className={`text-[11px] font-bold ${s.text}`}>{alert.type}</span>
+                                        <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-bold ${s.badge}`}>{sev.toUpperCase()}</span>
                                     </div>
-                                    <p className={`text-xs ${s.text} opacity-80 mb-1`}>{alert.message || alert.recommendation}</p>
+                                    <p className={`text-[11px] ${s.text} opacity-80`}>{alert.message || alert.recommendation}</p>
                                     {alert.recommendation && alert.message && (
-                                        <p className="text-[11px] bg-white/90 border border-black/5 p-2 rounded-lg text-gray-800">
+                                        <p className="text-[10px] bg-white/90 border border-black/5 p-1.5 rounded-lg text-gray-800 mt-1">
                                             <strong>Action:</strong> {alert.recommendation}
                                         </p>
                                     )}
@@ -174,76 +214,88 @@ const CropDashboard = () => {
                         })}
                     </div>
                 )}
-            </div>
 
-            {/* ═══════ 3. YIELD INTELLIGENCE ═══════ */}
-            <div className="stagger-card stagger-3 mb-4">
-                <YieldPredictionCard yieldData={yield_prediction} />
-            </div>
-
-            {/* ═══════ 4. FERTILIZER ═══════ */}
-            <div className="stagger-card stagger-4 mb-4">
-                <FertilizerCard fertilizerData={fertilizer_recommendation} />
-            </div>
-
-            {/* ═══════ 5. PEST RISK ═══════ */}
-            <div className="stagger-card stagger-5 mb-4">
-                <PestRiskCard riskData={pest_risk} />
-            </div>
-
-            {/* ═══════ 6. MARKET TREND ═══════ */}
-            <div className="stagger-card stagger-6 mb-4">
-                <MarketTrendCard marketData={market_trend} cropType={plan.crop_type} />
-            </div>
-
-            {/* ═══════ 7. RISK REDUCTION ═══════ */}
-            <div className="stagger-card stagger-7 mb-4">
-                <RiskReductionCard riskData={risk_reduction} />
-            </div>
-
-            {/* ═══════ 8. SOIL PROFILE ═══════ */}
-            {plan.soil_type && (
-                <div className="stagger-card stagger-8 glass rounded-2xl p-4 mb-4">
-                    <h4 className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
-                        <BarChart3 className="w-4 h-4 text-green-600" />
-                        {t('soil_profile')}
-                    </h4>
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                        <div className="bg-white/90 border border-black/5 p-3 rounded-xl">
-                            <p className="text-gray-600 font-medium mb-0.5">{t('type')}</p>
-                            <p className="font-bold text-gray-800 capitalize">{plan.soil_type}</p>
-                        </div>
-                        <div className="bg-white/90 border border-black/5 p-3 rounded-xl">
-                            <p className="text-gray-600 font-medium mb-0.5">Season</p>
-                            <p className="font-bold text-gray-800 capitalize">{plan.season}</p>
-                        </div>
-                        {plan.nitrogen && (
-                            <div className="bg-blue-50/60 p-3 rounded-xl">
-                                <p className="text-blue-500 font-medium mb-0.5">N</p>
-                                <p className="font-bold text-gray-800">{plan.nitrogen}</p>
-                            </div>
-                        )}
-                        {plan.phosphorus && (
-                            <div className="bg-amber-50/60 p-3 rounded-xl">
-                                <p className="text-amber-500 font-medium mb-0.5">P</p>
-                                <p className="font-bold text-gray-800">{plan.phosphorus}</p>
-                            </div>
-                        )}
-                        {plan.potassium && (
-                            <div className="bg-green-50/60 p-3 rounded-xl">
-                                <p className="text-green-500 font-medium mb-0.5">K</p>
-                                <p className="font-bold text-gray-800">{plan.potassium}</p>
-                            </div>
-                        )}
-                        {plan.ph_level && (
-                            <div className="bg-purple-50/60 p-3 rounded-xl">
-                                <p className="text-purple-500 font-medium mb-0.5">pH</p>
-                                <p className="font-bold text-gray-800">{plan.ph_level}</p>
-                            </div>
-                        )}
+                {/* No alerts state */}
+                {alertCount === 0 && (
+                    <div className="bg-green-50/80 text-green-700 text-[11px] p-2 rounded-xl border border-green-100/50 flex items-center gap-2 mt-2">
+                        <ShieldCheck className="w-3.5 h-3.5" />
+                        {t('safe_conditions')}
                     </div>
+                )}
+            </div>
+
+            {/* ═══════ DETAIL CARDS (below fold) ═══════ */}
+            <div id="detail-cards" className="space-y-2">
+
+                {/* Yield Intelligence */}
+                <div id="yield-section" className="stagger-card stagger-6">
+                    <YieldPredictionCard yieldData={yield_prediction} />
                 </div>
-            )}
+
+                {/* Fertilizer */}
+                <div className="stagger-card stagger-7">
+                    <FertilizerCard fertilizerData={fertilizer_recommendation} />
+                </div>
+
+                {/* Pest Risk */}
+                <div className="stagger-card stagger-8">
+                    <PestRiskCard riskData={pest_risk} />
+                </div>
+
+                {/* Market Trend */}
+                <div className="stagger-card">
+                    <MarketTrendCard marketData={market_trend} cropType={plan.crop_type} />
+                </div>
+
+                {/* Risk Reduction */}
+                <div className="stagger-card">
+                    <RiskReductionCard riskData={risk_reduction} />
+                </div>
+
+                {/* Soil Profile */}
+                {plan.soil_type && (
+                    <div className="stagger-card glass rounded-2xl p-3">
+                        <h4 className="text-xs font-bold text-gray-700 mb-2 flex items-center gap-2">
+                            <BarChart3 className="w-3.5 h-3.5 text-green-600" />
+                            {t('soil_profile')}
+                        </h4>
+                        <div className="grid grid-cols-3 gap-1.5 text-[11px]">
+                            <div className="bg-white/90 border border-black/5 p-2 rounded-xl">
+                                <p className="text-gray-500 font-medium text-[9px]">{t('type')}</p>
+                                <p className="font-bold text-gray-800 capitalize">{plan.soil_type}</p>
+                            </div>
+                            <div className="bg-white/90 border border-black/5 p-2 rounded-xl">
+                                <p className="text-gray-500 font-medium text-[9px]">Season</p>
+                                <p className="font-bold text-gray-800 capitalize">{plan.season}</p>
+                            </div>
+                            {plan.nitrogen && (
+                                <div className="bg-blue-50/60 p-2 rounded-xl">
+                                    <p className="text-blue-500 font-medium text-[9px]">N</p>
+                                    <p className="font-bold text-gray-800">{plan.nitrogen}</p>
+                                </div>
+                            )}
+                            {plan.phosphorus && (
+                                <div className="bg-amber-50/60 p-2 rounded-xl">
+                                    <p className="text-amber-500 font-medium text-[9px]">P</p>
+                                    <p className="font-bold text-gray-800">{plan.phosphorus}</p>
+                                </div>
+                            )}
+                            {plan.potassium && (
+                                <div className="bg-green-50/60 p-2 rounded-xl">
+                                    <p className="text-green-500 font-medium text-[9px]">K</p>
+                                    <p className="font-bold text-gray-800">{plan.potassium}</p>
+                                </div>
+                            )}
+                            {plan.ph_level && (
+                                <div className="bg-purple-50/60 p-2 rounded-xl">
+                                    <p className="text-purple-500 font-medium text-[9px]">pH</p>
+                                    <p className="font-bold text-gray-800">{plan.ph_level}</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
