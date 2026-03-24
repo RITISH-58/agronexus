@@ -23,6 +23,7 @@ class CropPlan(Base):
     phosphorus_level = Column(Float, nullable=True)
     potassium_level = Column(Float, nullable=True)
     soil_ph = Column(Float, nullable=True)
+    base_price = Column(Float, nullable=True)
     
     # Store weather fetched once at plan creation
     temperature = Column(Float, nullable=False, default=28.0)

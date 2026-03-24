@@ -100,10 +100,10 @@ const CropPlanForm = () => {
 
     // Core state
     const [formData, setFormData] = useState({
-        water_retention: '', soil_texture: '', cracking_behavior: '',
-        water_req: '', crop_perf: '', soil_color: '', rain_behavior: '',
-        location: '', previous_crop: '', crop_type: '', land_acres: '', sowing_date: '',
-        nitrogen_level: '', phosphorus_level: '', potassium_level: '', soil_ph: ''
+        crop_type: '', soil_type: 'Loamy', season: 'Kharif',
+        land_acres: '', water_source: 'Medium', location: '', sowing_date: '',
+        nitrogen_level: '', phosphorus_level: '', potassium_level: '', soil_ph: '',
+        base_price: ''
     });
 
     const handleOptionSelect = (fieldId, value) => {

@@ -25,6 +25,7 @@ class CropPlanBase(BaseModel):
     phosphorus_level: Optional[float] = None
     potassium_level: Optional[float] = None
     soil_ph: Optional[float] = None
+    base_price: Optional[float] = None
 
 class CropPlanCreate(CropPlanBase):
     pass

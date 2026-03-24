@@ -191,14 +191,10 @@ class CropService:
         # ── 7. Companion crops / risk reduction ──
         risk_reduction = get_companion_crops(main_crop=plan.crop_type)
         
-        # ── 8. Dynamic market trend (based on crop type) ──
-        market_prices = {
-            "rice": 2200, "wheat": 2275, "maize": 1962, "cotton": 6620,
-            "sugarcane": 315, "soybean": 4600, "groundnut": 5550,
-            "tomato": 2500, "onion": 2800, "potato": 1200,
-        }
-        crop_lower = plan.crop_type.lower().strip()
-        base_price = market_prices.get(crop_lower, 2200)
+        from app.ml.price_prediction import generate_price_decision
+        
+        # ── 8. Dynamic AI market trend (based on crop type) ──
+        market_data_ai = generate_price_decision(plan.crop_type, (estimated_rainfall - 800.0), plan.base_price)
         
         return {
             "plan_details": {

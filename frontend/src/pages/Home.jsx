@@ -45,13 +45,13 @@ const featureCards = [
     badge: 'Updated',
   },
   {
-    title: 'Find Buyers',
-    desc: 'Connect with nearby buyers and sell your crops easily',
-    icon: Users,
-    path: '/buyers',
-    img: IMAGES.vegetables,
-    gradient: 'from-emerald-600/90 to-yellow-500/80',
-    badge: '🆕 MARKET',
+    title: 'Direct Buyers',
+    desc: 'Sell directly to verified buyers & remove middlemen',
+    icon: TrendingUp,
+    path: '/entrepreneur',
+    img: IMAGES.dairy,
+    gradient: 'from-blue-600/90 to-indigo-700/80',
+    badge: '0% Middleman',
   },
 ];
 
