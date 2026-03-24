@@ -60,7 +60,49 @@ class CropService:
         return {"entrepreneur_opportunities": opportunities}
 
     def create_crop_plan(self, plan_data: CropPlanCreate, user_id: int):
-        new_plan = CropPlan(**plan_data.model_dump(), user_id=user_id)
+        # ── FEATURE ENGINEERING ──
+        # 1. Infer Soil Type
+        inferred_soil = "Loamy" # Default
+        texture = plan_data.soil_texture or ""
+        retention = plan_data.water_retention or ""
+        cracks = plan_data.cracking_behavior or ""
+        
+        if "Sticky" in texture or "Stays for long" in retention or "large cracks" in cracks:
+            inferred_soil = "Clay"
+        elif "Loose" in texture or "Drains quickly" in retention:
+            inferred_soil = "Sandy"
+        elif "Soft" in texture:
+            inferred_soil = "Loamy"
+            
+        if not plan_data.soil_type:
+            plan_data.soil_type = inferred_soil
+
+        # Fetch weather ONCE at plan creation
+        weather = get_current_weather(plan_data.location)
+        rain_prob = weather.get("rain_probability", 0)
+        estimated_rainfall = 800.0
+        if rain_prob > 70:
+            estimated_rainfall = 1200.0
+        elif rain_prob > 40:
+            estimated_rainfall = 900.0
+        elif rain_prob < 20:
+            estimated_rainfall = 500.0
+            
+        # 2. Adjust Moisture
+        rain_behavior = plan_data.rain_behavior or ""
+        if "Water gets logged" in rain_behavior:
+            estimated_rainfall *= 1.2
+        elif "Drains quickly" in rain_behavior or "Drains quickly" in retention:
+            estimated_rainfall *= 0.8
+
+        new_plan = CropPlan(
+            **plan_data.model_dump(), 
+            user_id=user_id,
+            temperature=weather.get("temperature", 28.0),
+            humidity=weather.get("humidity", 65.0),
+            rainfall=estimated_rainfall,
+            wind_speed=weather.get("wind_speed", 12.0)
+        )
         self.db.add(new_plan)
         self.db.commit()
         self.db.refresh(new_plan)
@@ -75,23 +117,27 @@ class CropService:
         if not plan:
             raise HTTPException(status_code=404, detail="Crop plan not found or not authorized")
             
-        # ── 1. Fetch real weather data ──
-        weather = get_current_weather(plan.location)
-        forecast = get_weather_forecast(plan.location, 7)
-        alerts = generate_weather_alerts(forecast)
+        # ── 1. STABLE WEATHER FROM DATABASE ──
+        # Fix: NEVER call live API on dashboard load. Use stored values to guarantee consistency.
+        real_temp = getattr(plan, "temperature", 28.0)
+        real_humidity = getattr(plan, "humidity", 65.0)
+        estimated_rainfall = getattr(plan, "rainfall", 800.0)
+        wind_speed = getattr(plan, "wind_speed", 12.0)
+
+        weather = {
+            "location": plan.location,
+            "temperature": real_temp,
+            "humidity": real_humidity,
+            "wind_speed": wind_speed,
+            "condition": "Stable", # Placeholder for UI
+            "rain_probability": 0 # Placeholder for UI
+        }
         
-        # ── 2. Extract real weather values ──
-        real_temp = weather.get("temperature", 28.0)
-        real_humidity = weather.get("humidity", 65.0)
-        # Estimate rainfall from weather data (rain_probability > 50 → moderate rain)
-        rain_prob = weather.get("rain_probability", 0)
-        estimated_rainfall = 800.0  # Seasonal default
-        if rain_prob > 70:
-            estimated_rainfall = 1200.0
-        elif rain_prob > 40:
-            estimated_rainfall = 900.0
-        elif rain_prob < 20:
-            estimated_rainfall = 500.0
+        # Forecast is mocked for now as we don't store 7-day JSON in the DB.
+        # This prevents external API calls on reload while maintaining the alerts component.
+        from app.ml.weather_service import _get_mock_forecast
+        forecast = _get_mock_forecast(plan.location, 7)
+        alerts = generate_weather_alerts(forecast)
         
         # ── 3. Read soil NPK/pH from the crop plan (user-provided or defaults) ──
         soil_n  = plan.nitrogen_level  if plan.nitrogen_level  else 80.0
@@ -104,10 +150,10 @@ class CropService:
             crop=plan.crop_type, 
             temperature=real_temp, 
             humidity=real_humidity, 
-            rainfall_mm=rain_prob > 50 and 20.0 or 0.0
+            rainfall_mm=estimated_rainfall / 30.0 # Approximate daily rain
         )
         
-        # ── 5. REAL ML yield prediction ──
+        # ── 5. REAL ML yield prediction (Using STABLE DB weather inputs) ──
         yield_data = predict_yield(
             crop_type=plan.crop_type,
             soil_type=plan.soil_type,
@@ -120,6 +166,20 @@ class CropService:
             soil_k=soil_k,
             soil_ph=soil_ph,
         )
+        
+        # ── 5.5 Soil Insights Generation ──
+        moisture_indicator = "Medium"
+        if plan.rain_behavior and "logged" in plan.rain_behavior.lower():
+            moisture_indicator = "High"
+        elif plan.water_retention and "quickly" in plan.water_retention.lower():
+            moisture_indicator = "Low"
+            
+        soil_insight = {
+            "soil_type": plan.soil_type,
+            "moisture_level": moisture_indicator,
+            "climate": "Semi-humid" if estimated_rainfall > 1000 else "Semi-arid",
+            "explanation": f"Based on your soil texture and water retention, your land is best suited for crops compatible with {plan.soil_type.lower()} soil that require {moisture_indicator.lower()} moisture."
+        }
         
         # ── 6. Fertilizer recommendation ──
         fertilizer = get_fertilizer_recommendation(
@@ -157,7 +217,12 @@ class CropService:
             "yield_prediction": yield_data,
             "fertilizer_recommendation": fertilizer,
             "risk_reduction": risk_reduction,
-            "market_trend": market_data_ai
+            "soil_insight": getattr(locals(), "soil_insight", None),
+            "market_trend": {
+                "current_price_qt": base_price,
+                "trend": "upward",
+                "percentage_change": round(4.5 + (hash(crop_lower) % 30) / 10, 1)
+            }
         }
 
     def predict_yield_standalone(self, payload: dict) -> dict:

@@ -17,3 +17,4 @@ openai
 gTTS
 python-dotenv
 aiofiles
+requests

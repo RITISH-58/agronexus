@@ -90,8 +90,8 @@ const AgriVoice = () => {
           <ChevronLeft size={20} className="text-dark" />
         </Link>
         <div>
-          <h1 className="text-xl font-extrabold text-dark tracking-tight">AgriVoice PRO</h1>
-          <p className="text-xs text-muted">AI advice via phone call</p>
+          <h1 className="text-xl font-extrabold text-dark tracking-tight">Buyers</h1>
+          <p className="text-xs text-muted">Farm To Fork</p>
         </div>
       </div>
 
